@@ -1,0 +1,57 @@
+.contenedorExterno{
+    border-radius: 12px;
+    margin-top: 2%;
+    padding: 2%;
+    background-image: url('https://gifdb.com/images/file/white-dots-on-blue-background-txkjni4df7a0meza.gif');
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+}
+
+.elementoInterno{
+    margin-bottom: 3%;
+}
+
+.contenedorImagenPokemon{
+    /*background: rgba(9, 65, 102, 0.8);;*/
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    padding: 15%;
+    border: 3px, black, solid;
+}
+
+.contenedorDatosPokemon{
+    border: 3px, black, solid;
+    background: #FDFFFD;
+    border-radius: 12px;
+}
+
+.imagenPokemon{
+    max-width: 300px; /* Máximo ancho permitido */
+    max-height: 200px; /* Máximo alto permitido */
+    width: auto;       /* Mantiene proporción */
+    height: auto;      /* Mantiene proporción */
+}
+
+.dragon{
+    background: #7C6DA4;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.volador{
+    background: #89AAE3;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+   
+.contenedorMedio{
+    background:black;
+    color: #CE5D4D;
+}
