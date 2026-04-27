@@ -1,36 +1,113 @@
 .contenedorExterno{
     border-radius: 12px;
-    margin-top: 2%;
+    margin-top: 0;
     padding: 2%;
     background-image: url('https://gifdb.com/images/file/white-dots-on-blue-background-txkjni4df7a0meza.gif');
     background-size: cover;
     background-position: center; 
     background-repeat: no-repeat;
+    border: 3px, black, solid;
+    margin-bottom: 1%;
 }
 
-.elementoInterno{
+/*en la soledad, 
+todo lo que nos debemos, 
+reconocernos, 
+y por ultimo, 
+por piedad nos perdonemos, 
+no eres mia, 
+me alejo, 
+mi vida,
+en el espejo.*/
+
+.contenedorEstadisticas{
+    border-radius: 12px;
+    margin-top: 0;
+    padding: 2%;
+    background: #FE3D1E;
+    border: 3px, black, solid;
+    border-radius: 0% 0% 12px 12px;
+}
+
+.contenedorGrafica{
+    background: white;
+    border: 3px, black, solid;
+    border-radius: 12px;
+}
+
+
+.contenedorMedio{
+    border-radius: 12px 12px 0% 0%;
+    margin-top: 0;
+    padding: 2%;
+    background: black;
+    border: 3px, black, solid;
+}
+
+
+.fondo{
+    background-image: url('https://images6.alphacoders.com/139/thumb-1920-1395493.jpg');
+    background-size: cover;       /* Ajusta la imagen al tamaño de la pantalla */
+    background-position: center;  /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
+    height: 100vh;  
+    padding-top: 2%;              
+}
+
+.elementoInterno{   
     margin-bottom: 3%;
 }
 
 .contenedorImagenPokemon{
-    /*background: rgba(9, 65, 102, 0.8);;*/
     background: rgba(255, 255, 255, 0.8);
     border-radius: 12px;
     padding: 15%;
     border: 3px, black, solid;
+    margin-bottom: 3%;
 }
 
 .contenedorDatosPokemon{
     border: 3px, black, solid;
     background: #FDFFFD;
     border-radius: 12px;
+    padding: 2%;
+}
+
+.botonCambioPagina{
+    border-radius: 12px;
+    margin-left: 3%;
+    padding: auto;
 }
 
 .imagenPokemon{
-    max-width: 300px; /* Máximo ancho permitido */
-    max-height: 200px; /* Máximo alto permitido */
-    width: auto;       /* Mantiene proporción */
-    height: auto;      /* Mantiene proporción */
+    max-width: 300px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+}
+
+.machoBoton{
+    margin-left: 2%;
+    border-radius: 20px;
+    background-color: blue;
+    color: white;
+    border-color: black;
+}
+
+.hembraBoton{
+    margin-left: 2%;
+    border-radius: 20px;
+    background-color: palevioletred;
+    color: white;
+    border-color: black;
+}
+
+.shinyBoton{
+    margin-left: 2%;
+    border-radius: 20px;
+    background-color: goldenrod;
+    color: white;
+    border-color: black;
 }
 
 .dragon{
@@ -49,9 +126,4 @@
     padding: 0.3%;
     border: 2px, black, solid;
     margin-right: 2%;
-}
-   
-.contenedorMedio{
-    background:black;
-    color: #CE5D4D;
 }

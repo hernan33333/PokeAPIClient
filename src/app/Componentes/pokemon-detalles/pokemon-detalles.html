@@ -1,24 +1,52 @@
-<div class="container">
-    <div class="contenedorExterno">
-        <div class="row">
-            <div class="col-3">
-                <div class="contenedorImagenPokemon">
-
-                    <img class="imagenPokemon"
-                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/384.png">
-                </div>
-            </div>
-            <div class="col">
-                <div class="contenedorDatosPokemon">
-                    <div class="elementoInterno">
-                        <h1 class="text-dark elementoInterno">
-                            <strong>384</strong>
-                             Rayquaza
-                        </h1>
+<div class="fondo">
+    <div class="container">
+        <div class="contenedorExterno">
+            <div class="row">
+                <div class="col-3">
+                    <div class="contenedorImagenPokemon">
+                        <img class="imagenPokemon"
+                            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/384.png"
+                            (click)="reproducirGrito('https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/384.ogg')">
                     </div>
                     <div class="row">
                         <div class="col">
-                            <!--@if(pokemon?.Tipos?.length == 1){
+                            <button class="machoBoton"><i class="bi bi-gender-male"></i></button>
+                        </div>
+                        <div class="col">
+                            <button class="hembraBoton"><i class="bi bi-gender-female"></i></button>
+                        </div>
+                        <div class="col">
+                            <button class="shinyBoton"><i class="bi bi-gender-male"></i></button>
+                        </div>
+                        <div class="col">
+                            <button class="shinyBoton"><i class="bi bi-gender-female"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="contenedorDatosPokemon">
+                        <div class="row elementoInterno">
+                            <div class="col">
+                                <h1 class="text-dark">Rayquaza</h1>
+                            </div>
+
+                            <div class="col">
+                                <button class="botonCambioPagina" [routerLink]="['GetById/',idPokemon+1]"><i
+                                        class="bi bi-caret-up-fill"></i></button>
+                                <button class="botonCambioPagina" [routerLink]="['GetById/',idPokemon-1]"><i
+                                        class="bi bi-caret-down-fill"></i></button>
+                            </div>
+                            <div class="col">
+                                <h1 class="text-dark"><strong>384</strong></h1>
+                            </div>
+                            <div class="col">
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <!--@if(pokemon?.Tipos?.length == 1){
                                 <div class="{{pokemon?.Tipos[0]?.Nombre}}">Tipo Dragon{{pokemon?.Tipos[0]?.Nombre}}</div>
                             }
                             @else{
@@ -26,37 +54,78 @@
                                     <div class="{{Tipo.Nombre}}">{{Tipo.Nombre}}</div>
                                 }
                             }-->
-                            <div>
-                                <strong class="dragon elementoInterno"> Dragon </strong>
-                                <strong class="volador elementoInterno"> Volador </strong>
+                                <div class="elementoInterno">
+                                    <strong class="dragon elementoInterno"> Dragon </strong>
+                                    <strong class="volador elementoInterno"> Volador </strong>
+                                </div>
+                                <h6 class="elementoInterno">Rayquaza ha vivido en la capa de ozono durante millones de
+                                    años, alimentándose de
+                                    meteoritos.
+                                    La energía de estos meteoritos se acumula en su cuerpo y le permite megaevolucionar.
+                                </h6>
                             </div>
-                            <h6 class="elementoInterno">Rayquaza ha vivido en la capa de ozono durante millones de años, alimentándose de
-                                meteoritos.
-                                La energía de estos meteoritos se acumula en su cuerpo y le permite megaevolucionar.
-                            </h6>
-                        </div>
 
-                    </div>
-                    <div class="row contenedorMedio">
-                        <div class="col">
-                            <div>
-                                <strong>Altura: 70 m</strong>
-                            </div>
-                            <div>
-                                <strong>Peso: 2065 k</strong>
-                            </div>
-                            
-                            
                         </div>
+                        <div class="row">
+                            <div class="col">
+                                <div>
+                                    <strong>Altura: 70 mt</strong>
+                                </div>
+                                <div>
+                                    <strong>Peso: 2065 kg</strong>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <strong>Habilidad</strong>
+                                <p><strong>Bucle Aire: </strong> Anula los efectos del tiempo atmosférico.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+        <div class="contenedorMedio">
+            
+        </div>
+
+        <div class="contenedorEstadisticas">
+            <div class="row contenedorGrafica">
+                <div class="col-4">
+                    <div style="width: 350px; margin: auto;">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+                <div class="col">
+                    <div>
+                        <p><strong>Puntos de Salud:</strong> 105</p>
+                    </div>
+                    <div>
+                        <p><strong>Ataque:</strong> 150</p>
+                    </div>
+                    <div>
+                        <p><strong>Defensa:</strong> 90</p>
+                    </div>
+                    <div>
+                        <p><strong>Ataque Especial:</strong> 150</p>
+                    </div>
+                    <div>
+                        <p><strong>Defensa Especial:</strong> 90</p>
+                    </div>
+                    <div>
+                        <p><strong>Velecidad:</strong> 95</p>
                     </div>
                 </div>
 
             </div>
 
-
-
         </div>
-
-
     </div>
 </div>
