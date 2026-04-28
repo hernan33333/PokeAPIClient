@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
   templateUrl: './carga-component.html',
   styleUrl: './carga-component.css',
 })
-export class CargaComponent {}
+export class CargaComponent {
+
+  rutaImagenCargando = "/pokeball-loading.png";
+
+}
