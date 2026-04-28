@@ -10,16 +10,6 @@
     margin-bottom: 1%;
 }
 
-/*en la soledad, 
-todo lo que nos debemos, 
-reconocernos, 
-y por ultimo, 
-por piedad nos perdonemos, 
-no eres mia, 
-me alejo, 
-mi vida,
-en el espejo.*/
-
 .contenedorEstadisticas{
     border-radius: 12px;
     margin-top: 0;
@@ -110,8 +100,8 @@ en el espejo.*/
     border-color: black;
 }
 
-.dragon{
-    background: #7C6DA4;
+.normal{
+    background: #919AA2;
     border-radius: 10px;
     color: white;
     padding: 0.3%;
@@ -119,8 +109,153 @@ en el espejo.*/
     margin-right: 2%;
 }
 
-.volador{
-    background: #89AAE3;
+.fighting{
+    background: #D84117;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.flying{
+    background: #8FA9DE;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.poison{
+    background: #B567CE;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.ground{
+    background: #D97845;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.rock{
+    background: #C8B686;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.bug{
+    background: #91C12F;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.ghost{
+    background: #33336B;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.steel{
+    background: #899098;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.fire{
+    background: #EA2A1F;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+
+.water{
+    background: #0778CC;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.grass{
+    background: #1D932A;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.electric{
+    background: #F7DF0D;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.psychic{
+    background: #7C3B8F;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.ice{
+    background: #73CEC0;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.dragon{
+    background: #006FC9;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.dark{
+    background: black;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.fairy{
+    background: #EC8FE6;
     border-radius: 10px;
     color: white;
     padding: 0.3%;

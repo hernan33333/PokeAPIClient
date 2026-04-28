@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PokemonModel } from '../Modelos/pokemon-model';
+import { ResultadoModel } from '../Modelos/resultado-model';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ import { PokemonModel } from '../Modelos/pokemon-model';
 })
 export class PokemonService {
 
-  private url:string = "";
+  private url:string = "http://192.167.0.87:8080/pokemon";
 
   constructor(private http: HttpClient){};
 
@@ -17,7 +18,7 @@ export class PokemonService {
     return this.http.get<PokemonModel[]>(this.url);
   }
 
-  getById(IdPokemon: number):Observable<PokemonModel>{
-    return this.http.get<PokemonModel>(this.url+IdPokemon);
+  getById(IdPokemon: number):Observable<ResultadoModel<PokemonModel>>{
+    return this.http.get<ResultadoModel<PokemonModel>>(this.url+"/"+IdPokemon);
   }
 }

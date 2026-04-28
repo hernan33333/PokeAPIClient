@@ -5,7 +5,7 @@ import { SpriteModel } from "./sprite-model";
 import { TipoModel } from "./tipo-model";
 
 export interface PokemonModel {
-    IdPokemon: number,
+    Id: number,
     Nombre: string,
     PuntosSalud: number,
     Ataque: number,
@@ -21,5 +21,5 @@ export interface PokemonModel {
     Habilidades: HabilidadModel[]
     Generacion: GeneracionModel,
     Region: RegionModel
-    Sprites: SpriteModel[]
+    Sprites: SpriteModel
 }

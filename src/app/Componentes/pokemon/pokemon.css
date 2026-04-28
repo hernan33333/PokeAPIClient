@@ -1,0 +1,30 @@
+.fondo{
+    background-image: url('https://wallpapercave.com/wp/wp2711114.gif');
+    background-size: cover;       /* Ajusta la imagen al tamaño de la pantalla */
+    background-position: center;  /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
+    height: 100vh;  
+    padding-top: 2%;              
+}
+
+.contenedorExterno{
+    border-radius: 12px;
+    background-image: url('https://tse3.mm.bing.net/th/id/OIP.guA7UV0e2-p-vTrN6ZjzFAHaEK?rs=1&pid=ImgDetMain&o=7&rm=3');
+    background-size: cover;
+    background-position: center;  /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
+    padding: 1%;
+    margin-top: 0;
+    border: 3px, black, solid;
+    margin-bottom: 1%;
+}
+
+.contenedorCartas{
+    padding: 2%;
+}
+
+.pokemon-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmac(220px,1fr));
+    gap: 20px;
+}

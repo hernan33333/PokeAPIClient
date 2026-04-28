@@ -1,7 +1,8 @@
-import { Component, Input, AfterViewInit } from '@angular/core';
+import { Component, Input, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { PokemonService } from '../../Servicios/pokemon-service';
 import { PokemonModel } from '../../Modelos/pokemon-model';
-import { RouterLink } from "@angular/router";
+import { ActivatedRoute, RouterLink } from "@angular/router";
+import { PokemonModelAPI } from '../../PokeAPI/pokemonModelAPI';
 
 declare var Chart: any;
 
@@ -11,82 +12,54 @@ declare var Chart: any;
   templateUrl: './pokemon-detalles.html',
   styleUrl: './pokemon-detalles.css',
 })
-export class PokemonDetalles implements AfterViewInit {
+export class PokemonDetalles {
 
-  ngAfterViewInit(): void {
-    const ctx = (document.getElementById('radarChart') as HTMLCanvasElement).getContext('2d');
-
-    new Chart(ctx, {
-      type: 'radar',
-      data: {
-        labels: ['PS', 'Ataque', 'Defensa', 'At. Especial', 'Def. Especial', 'Velocidad'],
-        datasets: [
-          
-          {
-            label: 'Rayquaza',
-            data: [105, 150, 90, 150, 90, 95],
-            fill: true,
-            backgroundColor: 'rgba(60, 30, 30, 0.8)',
-            borderColor: 'rgb(0, 0, 0)',
-            pointBackgroundColor: 'rgb(0, 0, 0)'
-          }
-        ],
-        options: {
-          responsive: true,
-          plugins: {
-            legend: { position: 'top' },
-          },
-          scales: {
-            r: {
-              min:0,
-              max:260,
-              ticks: {
-                stepSize: 50,
-                color: '#000000',
-                font: {
-                  size: 14
-                }
-
-              }
-            }
-          },
-          pointLabels: {
-            font: {
-              size: 16
-            },
-            color: '#000'
-          },
-          grid:{
-            color:'#ccc'
-          }
-        }
-      }
-    });
-  }
-
-  @Input() id = '';
-
-  idPokemon: number = parseInt(this.id);
+  @Input() id!: string;
 
   public pokemon: PokemonModel | undefined;
 
-  constructor(private pokemonService: PokemonService) { };
+  public poke: PokemonModelAPI | undefined;
 
-  ngOnInit() {
-    this.GetById(parseInt(this.id));
+  constructor(private pokemonService: PokemonService,
+    private cdr: ChangeDetectorRef,
+    private route: ActivatedRoute) { };
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params =>{
+      const id = Number(params.get('id'));
+      if(id){
+        this.GetById(Number(id));
+      }
+    })
   }
 
-  reproducirGrito(url: string) {
+  reproducirGrito(url: string | undefined) {
+    if (!url) {
+      console.warn("No hay una URL de audio disponible");
+      return;
+    }
+
     const audio = new Audio(url);
     audio.play().catch(err => {
       console.log("No se pudo reproducir: " + err);
     })
   }
 
+  /*getById(Id: number) {
+    this.pokemonServiceAPI.getById(Id).subscribe(
+      data => {
+        this.poke = data;
+        this.cdr.detectChanges();
+      }
+    )
+  }*/
+
   GetById(IdPokemon: number) {
     this.pokemonService.getById(IdPokemon).subscribe(
       data => {
-        this.pokemon = data;
+        console.log(data.object);
+        this.pokemon = data.object;
+        console.log(data)
       }
     )
   }

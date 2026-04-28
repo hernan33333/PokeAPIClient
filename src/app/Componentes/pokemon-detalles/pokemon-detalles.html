@@ -4,9 +4,8 @@
             <div class="row">
                 <div class="col-3">
                     <div class="contenedorImagenPokemon">
-                        <img class="imagenPokemon"
-                            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/384.png"
-                            (click)="reproducirGrito('https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/384.ogg')">
+                        <img class="imagenPokemon" src="{{pokemon?.Sprites?.front_default}}"
+                            (click)="reproducirGrito(pokemon?.Sonido)">
                     </div>
                     <div class="row">
                         <div class="col">
@@ -27,17 +26,33 @@
                     <div class="contenedorDatosPokemon">
                         <div class="row elementoInterno">
                             <div class="col">
-                                <h1 class="text-dark">Rayquaza</h1>
+                                <h1 class="text-dark">{{pokemon?.Nombre}}</h1>
                             </div>
 
                             <div class="col">
-                                <button class="botonCambioPagina" [routerLink]="['GetById/',idPokemon+1]"><i
+                                @switch (pokemon!.Id) {
+                                @case (1) {
+                                <button class="botonCambioPagina" [routerLink]="['/GetById/',pokemon!.Id+1]"><i
                                         class="bi bi-caret-up-fill"></i></button>
-                                <button class="botonCambioPagina" [routerLink]="['GetById/',idPokemon-1]"><i
+                                <button class="botonCambioPagina" [routerLink]="['/GetById/',1025]"><i
                                         class="bi bi-caret-down-fill"></i></button>
+                                }
+                                @case (1025) {
+                                <button class="botonCambioPagina" [routerLink]="['/GetById/',1]"><i
+                                        class="bi bi-caret-up-fill"></i></button>
+                                <button class="botonCambioPagina" [routerLink]="['/GetById/',pokemon!.Id-1]"><i
+                                        class="bi bi-caret-down-fill"></i></button>
+                                }
+                                @default {
+                                <button class="botonCambioPagina" [routerLink]="['/GetById/',pokemon!.Id+1]"><i
+                                        class="bi bi-caret-up-fill"></i></button>
+                                <button class="botonCambioPagina" [routerLink]="['/GetById/',pokemon!.Id-1]"><i
+                                        class="bi bi-caret-down-fill"></i></button>
+                                }
+                                }
                             </div>
                             <div class="col">
-                                <h1 class="text-dark"><strong>384</strong></h1>
+                                <h1 class="text-dark"><strong>{{pokemon?.Id}}</strong></h1>
                             </div>
                             <div class="col">
 
@@ -46,17 +61,10 @@
 
                         <div class="row">
                             <div class="col">
-                                <!--@if(pokemon?.Tipos?.length == 1){
-                                <div class="{{pokemon?.Tipos[0]?.Nombre}}">Tipo Dragon{{pokemon?.Tipos[0]?.Nombre}}</div>
-                            }
-                            @else{
-                                @for(Tipo of pokemon?.Tipos; track Tipo.IdTipo){
-                                    <div class="{{Tipo.Nombre}}">{{Tipo.Nombre}}</div>
-                                }
-                            }-->
                                 <div class="elementoInterno">
-                                    <strong class="dragon elementoInterno"> Dragon </strong>
-                                    <strong class="volador elementoInterno"> Volador </strong>
+                                    @for (tipo of pokemon?.Tipos; track tipo.IdTipo) {
+                                    <strong class="{{tipo.Nombre}}">{{tipo.Nombre}}</strong>
+                                    }
                                 </div>
                                 <h6 class="elementoInterno">Rayquaza ha vivido en la capa de ozono durante millones de
                                     años, alimentándose de
@@ -69,15 +77,18 @@
                         <div class="row">
                             <div class="col">
                                 <div>
-                                    <strong>Altura: 70 mt</strong>
+                                    <strong>Altura: {{pokemon?.Altura}} mt</strong>
                                 </div>
                                 <div>
-                                    <strong>Peso: 2065 kg</strong>
+                                    <strong>Peso: {{pokemon?.Peso}} kg</strong>
                                 </div>
                             </div>
                             <div class="col">
-                                <strong>Habilidad</strong>
-                                <p><strong>Bucle Aire: </strong> Anula los efectos del tiempo atmosférico.</p>
+                                <strong>Habilidades</strong>
+                                @for (habilidad of pokemon?.Habilidades; track habilidad.IdHabilidad) {
+                                <p><strong> {{habilidad.Nombre}}: </strong> {{habilidad.Efecto}}</p>
+                                }
+                                <!--descripcion numero 79-->
                             </div>
 
                         </div>
@@ -93,7 +104,8 @@
         </div>
 
         <div class="contenedorMedio">
-            
+
+
         </div>
 
         <div class="contenedorEstadisticas">
@@ -104,26 +116,12 @@
                     </div>
                 </div>
                 <div class="col">
+                    @for (stat of poke?.stats; track $index) {
                     <div>
-                        <p><strong>Puntos de Salud:</strong> 105</p>
+                        <p><strong>{{stat.stat.name}}: </strong>{{stat.base_stat}}</p>
                     </div>
-                    <div>
-                        <p><strong>Ataque:</strong> 150</p>
-                    </div>
-                    <div>
-                        <p><strong>Defensa:</strong> 90</p>
-                    </div>
-                    <div>
-                        <p><strong>Ataque Especial:</strong> 150</p>
-                    </div>
-                    <div>
-                        <p><strong>Defensa Especial:</strong> 90</p>
-                    </div>
-                    <div>
-                        <p><strong>Velecidad:</strong> 95</p>
-                    </div>
+                    }
                 </div>
-
             </div>
 
         </div>
