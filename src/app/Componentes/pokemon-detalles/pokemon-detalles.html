@@ -87,7 +87,7 @@
                             <div class="col">
                                 <strong>Habilidades</strong>
                                 @for (habilidad of pokemon.Habilidades; track habilidad.IdHabilidad) {
-                                <p><strong> {{habilidad.Nombre}}: </strong> {{habilidad.Efecto}}</p>
+                                <p><strong> {{habilidad.Nombre}}: </strong> {{habilidad.EfectosEntrada[2]}}</p>
                                 }
                                 <!--descripcion numero 79-->
                             </div>
@@ -146,5 +146,8 @@
             </div>
         </div>
     </div>
+    }
+    @else {
+        <p>Cargando datos del Pokémon...</p>
     }
 </div>
