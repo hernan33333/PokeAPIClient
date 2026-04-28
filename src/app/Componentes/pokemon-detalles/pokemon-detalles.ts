@@ -45,15 +45,6 @@ export class PokemonDetalles {
     })
   }
 
-  /*getById(Id: number) {
-    this.pokemonServiceAPI.getById(Id).subscribe(
-      data => {
-        this.poke = data;
-        this.cdr.detectChanges();
-      }
-    )
-  }*/
-
   GetById(IdPokemon: number) {
     this.pokemonService.getById(IdPokemon).subscribe(
       data => {

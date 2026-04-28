@@ -10,7 +10,7 @@ import { ResultadoModel } from '../Modelos/resultado-model';
 })
 export class PokemonService {
 
-  private url:string = "http://192.167.0.87:8080/pokemon";
+  private url:string = "http://localhost:8080/pokemon";
 
   constructor(private http: HttpClient){};
 
