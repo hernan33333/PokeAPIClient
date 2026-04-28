@@ -1,8 +1,7 @@
-import { Component, Input, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, AfterViewInit, ChangeDetectorRef, inject } from '@angular/core';
 import { PokemonService } from '../../Servicios/pokemon-service';
 import { PokemonModel } from '../../Modelos/pokemon-model';
-import { ActivatedRoute, RouterLink } from "@angular/router";
-import { PokemonModelAPI } from '../../PokeAPI/pokemonModelAPI';
+import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 
 declare var Chart: any;
 
@@ -18,9 +17,8 @@ export class PokemonDetalles {
 
   public pokemon: PokemonModel | undefined;
 
-  public poke: PokemonModelAPI | undefined;
-
-  constructor(private pokemonService: PokemonService,
+  constructor(
+    private pokemonService: PokemonService,
     private cdr: ChangeDetectorRef,
     private route: ActivatedRoute) { };
 
