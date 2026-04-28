@@ -1,0 +1,150 @@
+<div class="fondo">
+    @if(pokemon){
+    <div class="container">
+        <div class="contenedorExterno">
+            <div class="row">
+                <div class="col-3">
+                    <div class="contenedorImagenPokemon">
+                        <img class="imagenPokemon" src="{{pokemon.Sprites.front_default}}"
+                            (click)="reproducirGrito(pokemon.Sonido)">
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button class="machoBoton"><i class="bi bi-gender-male"></i></button>
+                        </div>
+                        <div class="col">
+                            <button class="hembraBoton"><i class="bi bi-gender-female"></i></button>
+                        </div>
+                        <div class="col">
+                            <button class="shinyBoton"><i class="bi bi-gender-male"></i></button>
+                        </div>
+                        <div class="col">
+                            <button class="shinyBoton"><i class="bi bi-gender-female"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="contenedorDatosPokemon">
+                        <div class="row elementoInterno">
+                            <div class="col">
+                                <h1 class="text-dark">{{pokemon.Nombre}}</h1>
+                            </div>
+
+                            <div class="col">
+                                @switch (pokemon.Id) {
+                                @case (1) {
+                                <button class="botonCambioPagina" [routerLink]="['/GetById/',pokemon.Id+1]"><i
+                                        class="bi bi-caret-up-fill"></i></button>
+                                <button class="botonCambioPagina" [routerLink]="['/GetById/',1025]"><i
+                                        class="bi bi-caret-down-fill"></i></button>
+                                }
+                                @case (1025) {
+                                <button class="botonCambioPagina" [routerLink]="['/GetById/',1]"><i
+                                        class="bi bi-caret-up-fill"></i></button>
+                                <button class="botonCambioPagina" [routerLink]="['/GetById/',pokemon.Id-1]"><i
+                                        class="bi bi-caret-down-fill"></i></button>
+                                }
+                                @default {
+                                <button class="botonCambioPagina" [routerLink]="['/GetById/',pokemon.Id+1]"><i
+                                        class="bi bi-caret-up-fill"></i></button>
+                                <button class="botonCambioPagina" [routerLink]="['/GetById/',pokemon.Id-1]"><i
+                                        class="bi bi-caret-down-fill"></i></button>
+                                }
+                                }
+                            </div>
+                            <div class="col">
+                                <h1 class="text-dark"><strong>{{pokemon.Id}}</strong></h1>
+                            </div>
+                            <div class="col">
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="elementoInterno">
+                                    @for (tipo of pokemon.Tipos; track tipo.IdTipo) {
+                                    <strong class="{{tipo.Nombre}}">{{tipo.Nombre}}</strong>
+                                    }
+                                </div>
+                                <h6 class="elementoInterno">Rayquaza ha vivido en la capa de ozono durante millones de
+                                    años, alimentándose de
+                                    meteoritos.
+                                    La energía de estos meteoritos se acumula en su cuerpo y le permite megaevolucionar.
+                                </h6>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div>
+                                    <strong>Altura: {{pokemon.Altura}} mt</strong>
+                                </div>
+                                <div>
+                                    <strong>Peso: {{pokemon.Peso}} kg</strong>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <strong>Habilidades</strong>
+                                @for (habilidad of pokemon.Habilidades; track habilidad.IdHabilidad) {
+                                <p><strong> {{habilidad.Nombre}}: </strong> {{habilidad.Efecto}}</p>
+                                }
+                                <!--descripcion numero 79-->
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+        <div class="contenedorMedio">
+
+
+        </div>
+
+        <div class="contenedorEstadisticas">
+            <div class="row contenedorGrafica">
+                <div class="col">
+                    <div>
+                        <p><strong>Ataque: </strong>{{pokemon.Ataque}}</p>
+                    </div>
+                    <div>
+                        <p><strong>Atque especial: </strong>{{pokemon.AtaqueEspecial}}</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div>
+                        <p><strong>Defensa: </strong>{{pokemon.Defensa}}</p>
+                    </div>
+                    <div>
+                        <p><strong>Defensa especial: </strong>{{pokemon.DefensaEspecial}}</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div>
+                        <p><strong>Velocidad: </strong>{{pokemon.Velocidad}}</p>
+                    </div>
+                    <div>
+                        <p><strong>Experiencia Base: </strong>{{pokemon.ExperienciaBase}}</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div>
+                        <p><strong>Region: </strong>{{pokemon.Generacion.Nombre}}</p>
+                    </div>
+                    <div>
+                        <p><strong>Generacion: </strong>{{pokemon.Generacion.IdGeneracion}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>

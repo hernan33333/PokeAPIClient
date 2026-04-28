@@ -1,0 +1,264 @@
+.contenedorExterno{
+    border-radius: 12px;
+    margin-top: 0;
+    padding: 2%;
+    background-image: url('https://gifdb.com/images/file/white-dots-on-blue-background-txkjni4df7a0meza.gif');
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+    border: 3px, black, solid;
+    margin-bottom: 1%;
+}
+
+.contenedorEstadisticas{
+    border-radius: 12px;
+    margin-top: 0;
+    padding: 2%;
+    background: #FE3D1E;
+    border: 3px, black, solid;
+    border-radius: 0% 0% 12px 12px;
+}
+
+.contenedorGrafica{
+    background: white;
+    border: 3px, black, solid;
+    border-radius: 12px;
+}
+
+
+.contenedorMedio{
+    border-radius: 12px 12px 0% 0%;
+    margin-top: 0;
+    padding: 2%;
+    background: black;
+    border: 3px, black, solid;
+}
+
+
+.fondo{
+    background-image: url('https://images6.alphacoders.com/139/thumb-1920-1395493.jpg');
+    background-size: cover;       /* Ajusta la imagen al tamaño de la pantalla */
+    background-position: center;  /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
+    height: 100vh;  
+    padding-top: 2%;              
+}
+
+.elementoInterno{   
+    margin-bottom: 3%;
+}
+
+.contenedorImagenPokemon{
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    padding: 15%;
+    border: 3px, black, solid;
+    margin-bottom: 3%;
+}
+
+.contenedorDatosPokemon{
+    border: 3px, black, solid;
+    background: #FDFFFD;
+    border-radius: 12px;
+    padding: 2%;
+}
+
+.botonCambioPagina{
+    border-radius: 12px;
+    margin-left: 3%;
+    padding: auto;
+}
+
+.imagenPokemon{
+    max-width: 300px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+}
+
+.machoBoton{
+    margin-left: 2%;
+    border-radius: 20px;
+    background-color: blue;
+    color: white;
+    border-color: black;
+}
+
+.hembraBoton{
+    margin-left: 2%;
+    border-radius: 20px;
+    background-color: palevioletred;
+    color: white;
+    border-color: black;
+}
+
+.shinyBoton{
+    margin-left: 2%;
+    border-radius: 20px;
+    background-color: goldenrod;
+    color: white;
+    border-color: black;
+}
+
+.normal{
+    background: #919AA2;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.fighting{
+    background: #D84117;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.flying{
+    background: #8FA9DE;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.poison{
+    background: #B567CE;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.ground{
+    background: #D97845;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.rock{
+    background: #C8B686;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.bug{
+    background: #91C12F;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.ghost{
+    background: #33336B;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.steel{
+    background: #899098;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.fire{
+    background: #EA2A1F;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+
+.water{
+    background: #0778CC;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.grass{
+    background: #1D932A;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.electric{
+    background: #F7DF0D;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.psychic{
+    background: #7C3B8F;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.ice{
+    background: #73CEC0;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.dragon{
+    background: #006FC9;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.dark{
+    background: black;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.fairy{
+    background: #EC8FE6;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}

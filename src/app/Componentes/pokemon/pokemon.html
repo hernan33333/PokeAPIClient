@@ -1,0 +1,46 @@
+<div class="fondo">
+    <div class="container">
+        <div class="contenedorExterno row">
+            <div class="col">
+                <h3 class="text-dark">Pokedex</h3>
+            </div>
+            <div class="col-2">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Region</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Generacion</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Tipo</option>
+                    @for (tipo of tipos; track tipo.IdTipo) {
+                    <option value="{{tipo.IdTipo}}"> {{tipo.Nombre}}</option>
+                    }
+                </select>
+            </div>
+            <div class="col-2">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Recipient’s username"
+                        aria-describedby="button-addon2">
+                    <button class="btn btn-light" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="contenedorCartas py-4">
+            <div class="container mt-4">
+                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+                    @for (pokemon of pokemons; track pokemon.Id) {
+                    <div class="col">
+                        <app-pokemon-carta [pokemon]="pokemon"></app-pokemon-carta>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
