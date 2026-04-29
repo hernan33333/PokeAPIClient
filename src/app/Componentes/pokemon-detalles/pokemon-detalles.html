@@ -1,5 +1,6 @@
+@if(pokemon){
 <div class="fondo">
-    @if(pokemon){
+
     <div class="container">
         <div class="contenedorExterno">
             <div class="row">
@@ -143,8 +144,10 @@
             </div>
         </div>
     </div>
-    }
-    @else {
-        <p>Cargando datos del Pokémon...</p>
-    }
 </div>
+}
+@else {
+<div class="fondoCarga">
+    <p>Cargando datos del Pokémon...</p>
+</div>
+}
