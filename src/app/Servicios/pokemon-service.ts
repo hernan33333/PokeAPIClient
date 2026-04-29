@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { PokemonModel } from '../Modelos/pokemon-model';
 import { ResultadoModel } from '../Modelos/resultado-model';
 
@@ -10,12 +10,14 @@ import { ResultadoModel } from '../Modelos/resultado-model';
 })
 export class PokemonService {
 
-  private url:string = "http://localhost:8080/pokemon";
+  private url:string = "http://localhost:8080/pokeapi";
+
+  public pokemones : PokemonModel[] = [];
 
   constructor(private http: HttpClient){};
 
   getAll():Observable<PokemonModel[]>{
-    return this.http.get<PokemonModel[]>(this.url);
+    return this.http.get<ResultadoModel<PokemonModel>>(this.url).pipe(map((resultGetAll : ResultadoModel<PokemonModel>) => resultGetAll.objects as PokemonModel[]));
   }
 
   getById(IdPokemon: number):Observable<ResultadoModel<PokemonModel>>{

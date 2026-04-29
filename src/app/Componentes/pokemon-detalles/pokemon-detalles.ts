@@ -14,7 +14,8 @@ export class PokemonDetalles implements OnInit {
 
   public pokemon: PokemonModel | undefined;
 
-  constructor(private pokemonService: PokemonService,
+  constructor(
+    private pokemonService: PokemonService,
     private cdr: ChangeDetectorRef,
     private route: ActivatedRoute) { };
 
