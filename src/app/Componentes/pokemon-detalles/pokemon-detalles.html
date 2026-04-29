@@ -6,22 +6,26 @@
             <div class="row">
                 <div class="col-3">
                     <div class="contenedorImagenPokemon">
-                        <img class="imagenPokemon" src="{{pokemon.Sprites.front_default}}"
+                        <img class="imagenPokemon" [src]="urlImagen"
                             (click)="reproducirGrito(pokemon.Sonido)">
                     </div>
                     <div class="row">
                         <div class="col">
-                            <button class="machoBoton"><i class="bi bi-gender-male"></i></button>
+                            <button class="machoBoton"><i class="bi bi-gender-male" (click)="cambiarImagen(pokemon.Sprites.front_default)"></i></button>
                         </div>
+                        @if(pokemon.Sprites.front_female){
+                            <div class="col">
+                            <button class="hembraBoton"><i class="bi bi-gender-female" (click)="cambiarImagen(pokemon.Sprites.front_female)"></i></button>
+                        </div>
+                        }
                         <div class="col">
-                            <button class="hembraBoton"><i class="bi bi-gender-female"></i></button>
+                            <button class="shinyBoton"><i class="bi bi-gender-male" (click)="cambiarImagen(pokemon.Sprites.front_shiny)"></i></button>
                         </div>
-                        <div class="col">
-                            <button class="shinyBoton"><i class="bi bi-gender-male"></i></button>
+                        @if(pokemon.Sprites.front_shiny_female){
+                            <div class="col">
+                            <button class="shinyBoton"><i class="bi bi-gender-female" (click)="cambiarImagen(pokemon.Sprites.front_shiny_female)"></i></button>
                         </div>
-                        <div class="col">
-                            <button class="shinyBoton"><i class="bi bi-gender-female"></i></button>
-                        </div>
+                        }
                     </div>
                 </div>
                 <div class="col">
@@ -34,21 +38,21 @@
                             <div class="col">
                                 @switch (pokemon.Id) {
                                 @case (1) {
-                                <button class="botonCambioPagina" [routerLink]="['/GetById/',pokemon.Id+1]"><i
+                                <button class="botonCambioPagina" [routerLink]="['/pokemon/',pokemon.Id+1]"><i
                                         class="bi bi-caret-up-fill"></i></button>
-                                <button class="botonCambioPagina" [routerLink]="['/GetById/',1025]"><i
+                                <button class="botonCambioPagina" [routerLink]="['/pokemon/',1025]"><i
                                         class="bi bi-caret-down-fill"></i></button>
                                 }
                                 @case (1025) {
-                                <button class="botonCambioPagina" [routerLink]="['/GetById/',1]"><i
+                                <button class="botonCambioPagina" [routerLink]="['/pokemon/',1]"><i
                                         class="bi bi-caret-up-fill"></i></button>
-                                <button class="botonCambioPagina" [routerLink]="['/GetById/',pokemon.Id-1]"><i
+                                <button class="botonCambioPagina" [routerLink]="['/pokemon/',pokemon.Id-1]"><i
                                         class="bi bi-caret-down-fill"></i></button>
                                 }
                                 @default {
-                                <button class="botonCambioPagina" [routerLink]="['/GetById/',pokemon.Id+1]"><i
+                                <button class="botonCambioPagina" [routerLink]="['/pokemon/',pokemon.Id+1]"><i
                                         class="bi bi-caret-up-fill"></i></button>
-                                <button class="botonCambioPagina" [routerLink]="['/GetById/',pokemon.Id-1]"><i
+                                <button class="botonCambioPagina" [routerLink]="['/pokemon/',pokemon.Id-1]"><i
                                         class="bi bi-caret-down-fill"></i></button>
                                 }
                                 }
@@ -68,7 +72,7 @@
                                     <strong class="{{tipo.Nombre}}">{{tipo.Nombre}}</strong>
                                     }
                                 </div>
-                                <h6 class="elementoInterno">Descripcion
+                                <h6 class="elementoInterno">{{pokemon.Especie.Descripcion}}
                                 </h6>
                             </div>
 
@@ -135,10 +139,10 @@
                 </div>
                 <div class="col">
                     <div>
-                        <p><strong>Region: </strong>{{pokemon.Generacion.Nombre}}</p>
+                        <p><strong>Region: </strong>{{pokemon.Generacion.Region.Nombre}}</p>
                     </div>
                     <div>
-                        <p><strong>Generacion: </strong>{{pokemon.Generacion.IdGeneracion}}</p>
+                        <p><strong>Generacion: </strong>{{pokemon.Generacion.Region.id}}</p>
                     </div>
                 </div>
             </div>
