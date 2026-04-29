@@ -14,6 +14,8 @@ export class PokemonDetalles implements OnInit {
 
   public pokemon: PokemonModel | undefined;
 
+  public urlImagen: string = "";
+
   constructor(
     private pokemonService: PokemonService,
     private cdr: ChangeDetectorRef,
@@ -26,6 +28,12 @@ export class PokemonDetalles implements OnInit {
         this.GetById(parseInt(id))
       }
     })
+  }
+
+  cambiarImagen(url: string){
+      this.urlImagen = url;
+      this.cdr.detectChanges();
+    
   }
 
   reproducirGrito(url: string | undefined) {
@@ -43,6 +51,7 @@ export class PokemonDetalles implements OnInit {
     this.pokemonService.getById(IdPokemon).subscribe(
       data => {
         this.pokemon = data.object;
+        this.urlImagen = this.pokemon.Sprites.front_default;
         this.cdr.detectChanges();
       }
     )

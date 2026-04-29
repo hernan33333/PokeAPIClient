@@ -6,7 +6,7 @@ import { CargaComponent } from './Componentes/carga-component/carga-component';
 export const routes: Routes = [
     
     {path : "", component : CargaComponent},
-    {path: "pokemon", component:Pokemon},
-    {path:"GetById/:id", component: PokemonDetalles}
+    {path: "pokemon",component:Pokemon},
+    {path:"pokemon/:id", component: PokemonDetalles}
 
 ];
