@@ -7,16 +7,16 @@
             <div class="col-2">
                 <select class="form-select" aria-label="Default select example">
                     <option value="0" selected>Seleccione una Región...</option>
-                    @for (region of regiones; track region.IdRegion) {
+                    @for (region of regiones; track region.id) {
 
-                        <option [value]="region.IdRegion">{{region.Nombre}}</option>
+                        <option [value]="region.id">{{region.Nombre}}</option>
 
                     }
                 </select>
             </div>
             <div class="col-2">
                 <select class="form-select" aria-label="Default select example">
-                    <option value="0" selected>Seleccione una Generacion...</option>
+                    <option value="0" selected>Seleccione una Generación...</option>
 
                     @for (generacion of generaciones; track generacion.IdGeneracion) {
 

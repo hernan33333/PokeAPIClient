@@ -12,6 +12,8 @@ export class PokemonService {
 
   private url:string = "http://localhost:8080/pokeapi";
 
+  public pokemones : PokemonModel[] = [];
+
   constructor(private http: HttpClient){};
 
   getAll():Observable<ResultadoModel<PokemonModel>>{

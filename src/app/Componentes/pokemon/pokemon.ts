@@ -44,7 +44,18 @@ export class Pokemon implements OnInit {
 
   ngOnInit(): void {
 
-    this.cargarPokemons();
+    if(this.pokemonService.pokemones.length <= 0){
+
+      this.router.navigate([""]);
+
+    } else {
+
+      this.cargarPokemons();
+      this.GetAllGeneraciones();
+      this.GetAllRegiones();
+      this.GetAllTipos();
+
+    }
 
   }
 
@@ -53,14 +64,14 @@ export class Pokemon implements OnInit {
     if (direccion === 'sig') {
       this.offset += this.paso;
 
-      if (this.offset > 1025) {
+      if (this.offset > 1350) {
         this.offset = 0;
       }
     } else {
       this.offset -= this.paso;
 
       if (this.offset < 0) {
-        this.offset = 1025 - this.paso;
+        this.offset = 1350 - this.paso;
       }
     }
 
