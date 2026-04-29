@@ -1,3 +1,4 @@
+import { EspecieModel } from "./especie-model";
 import { GeneracionModel } from "./generacion-model";
 import { HabilidadModel } from "./habilidad-model";
 import { RegionModel } from "./region-model";
@@ -17,9 +18,10 @@ export interface PokemonModel {
     Peso: DoubleRange,
     ExperienciaBase: number,
     Sonido: string,
-    Tipos: TipoModel[]
-    Habilidades: HabilidadModel[]
+    Tipos: TipoModel[],
+    Habilidades: HabilidadModel[],
     Generacion: GeneracionModel,
-    Region: RegionModel
-    Sprites: SpriteModel
+    Region: RegionModel,
+    Sprites: SpriteModel,
+    Especie: EspecieModel
 }
