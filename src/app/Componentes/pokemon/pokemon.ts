@@ -9,15 +9,16 @@ import { RegionModel } from '../../Modelos/region-model';
 import { RegionesService } from '../../Servicios/region-service';
 import { GeneracionModel } from '../../Modelos/generacion-model';
 import { GeneracionService } from '../../Servicios/generacion-service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon',
-  imports: [PokemonCartaComponent],
+  imports: [PokemonCartaComponent, RouterLink],
   standalone: true,
   templateUrl: './pokemon.html',
   styleUrl: './pokemon.css',
 })
-export class Pokemon implements OnInit{
+export class Pokemon implements OnInit {
   public pokemon: PokemonModel | undefined;
 
   public pokemons: PokemonModel[] = [];
@@ -28,6 +29,9 @@ export class Pokemon implements OnInit{
   public regionSeleccionada: Number = 0;
   public generacionSeleccionada: Number = 0;
   public tipoSeleccionado: number = 0;
+
+  offset: number = 19;
+  paso: number = 19;
   
   constructor(
     private pokemonService: PokemonService, 
@@ -38,28 +42,57 @@ export class Pokemon implements OnInit{
     private cdr: ChangeDetectorRef
   ){};
 
-  ngOnInit(){
+  ngOnInit(): void {
 
-    if(this.pokemonService.pokemones.length <= 0){
+    this.cargarPokemons();
 
-      this.router.navigate([""]);
+  }
 
+  cambioPagina(direccion: 'sig' | 'ant') {
+
+    if (direccion === 'sig') {
+      this.offset += this.paso;
+
+      if (this.offset > 1025) {
+        this.offset = 0;
+      }
+    } else {
+      this.offset -= this.paso;
+
+      if (this.offset < 0) {
+        this.offset = 1025 - this.paso;
+      }
     }
 
     this.GetAllRegiones();
     this.GetAllGeneraciones();
     this.GetAllTipos();
 
+    this.cargarPokemons();
+
+  }
+
+
+  cargarPokemons() {
+
+    this.pokemonService.getAllPaginado(this.offset).subscribe(
+
+      data => {
+
+        this.pokemons = data.objects;
+        this.cdr.detectChanges();
+        
+      }
+    )
   }
 
   GetAll(){
 
     this.pokemonService.getAll().subscribe(
 
-      pokemonesData =>
-        {
+      pokemonesData =>{
 
-        this.pokemons = pokemonesData;
+        this.pokemons = pokemonesData.objects;
         this.cdr.detectChanges();
 
       },
@@ -113,7 +146,6 @@ export class Pokemon implements OnInit{
   }
 
   GetAllGeneraciones(){
-
     
     this.generacionService.getAll().subscribe(
 
@@ -136,11 +168,14 @@ export class Pokemon implements OnInit{
   }
 
   GetById(id: number){
+
     this.pokemonService.getById(id).subscribe(
-      data=>{
-        this.pokemon = data.object;
+
+      pokemonData => {
+
+        this.pokemon = pokemonData.object;
+
       }
     )
   }
-
 }

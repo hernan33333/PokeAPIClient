@@ -12,12 +12,14 @@ export class PokemonService {
 
   private url:string = "http://localhost:8080/pokeapi";
 
-  public pokemones : PokemonModel[] = [];
-
   constructor(private http: HttpClient){};
 
-  getAll():Observable<PokemonModel[]>{
-    return this.http.get<ResultadoModel<PokemonModel>>(this.url).pipe(map((resultGetAll : ResultadoModel<PokemonModel>) => resultGetAll.objects as PokemonModel[]));
+  getAll():Observable<ResultadoModel<PokemonModel>>{
+    return this.http.get<ResultadoModel<PokemonModel>>(this.url);
+  }
+
+  getAllPaginado(numero: number):Observable<ResultadoModel<PokemonModel>>{
+    return this.http.get<ResultadoModel<PokemonModel>>(this.url+"?offset="+numero);
   }
 
   getById(IdPokemon: number):Observable<ResultadoModel<PokemonModel>>{

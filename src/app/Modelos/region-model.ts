@@ -1,4 +1,5 @@
 export interface RegionModel{
-    IdRegion: number,
-    Nombre: string
+    id: number,
+    Nombre: string,
+    Generacion: number
 }

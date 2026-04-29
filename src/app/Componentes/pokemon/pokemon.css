@@ -3,8 +3,9 @@
     background-size: cover;       /* Ajusta la imagen al tamaño de la pantalla */
     background-position: center;  /* Centra la imagen */
     background-repeat: no-repeat; /* Evita que se repita */
-    height: 100vh;  
-    padding-top: 2%;              
+    min-height: 100vh;
+    padding-top: 2%;     
+    background-attachment: fixed;         
 }
 
 .contenedorExterno{
