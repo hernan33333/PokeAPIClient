@@ -24,7 +24,9 @@ export class Pokemon implements OnInit {
 
   constructor(private pokemonService: PokemonService,
     private tiposService: TipoService,
-    private cdr: ChangeDetectorRef) { };
+    private cdr: ChangeDetectorRef,
+    private router : Router
+    ){};
 
   ngOnInit(): void {
     this.cargarPokemons();
@@ -58,12 +60,15 @@ export class Pokemon implements OnInit {
     )
   }
 
+  GetAll(){
 
-  GetAll() {
     this.pokemonService.getAll().subscribe(
-      data => {
-        this.pokemons = data.objects;
+
+      data =>{
+
+        this.pokemons = data;
         this.cdr.detectChanges();
+
       }
     )
   }
@@ -80,7 +85,6 @@ export class Pokemon implements OnInit {
     this.pokemonService.getById(id).subscribe(
       data => {
         this.pokemon = data.object;
-        this.cdr.detectChanges();
       }
     )
   }

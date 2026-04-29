@@ -1,8 +1,10 @@
-export interface EspecieModel{
+export interface EspecieModel {
+
     Id: number,
     FelicidadBase: number,
-    Color: string,
-    Habitat: string,
-    Descripcion: string,
-    Forma: string
+    Color: String,
+    Habitat: String,
+    Descripcion: String,
+    Forma: String
+
 }

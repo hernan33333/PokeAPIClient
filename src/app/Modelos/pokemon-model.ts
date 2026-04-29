@@ -21,6 +21,7 @@ export interface PokemonModel {
     Tipos: TipoModel[],
     Habilidades: HabilidadModel[],
     Generacion: GeneracionModel,
+    Region: RegionModel,
     Sprites: SpriteModel,
     Especie: EspecieModel
 }

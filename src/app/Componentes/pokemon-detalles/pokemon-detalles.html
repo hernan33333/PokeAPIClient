@@ -72,8 +72,8 @@
                                     <strong class="{{tipo.Nombre}}">{{tipo.Nombre}}</strong>
                                     }
                                 </div>
-                                <h6 class="elementoInterno">{{pokemon.Especie.Descripcion}}
-                                </h6>
+                                <strong class="elementoInterno">Descripcion</strong>
+                                <p>{{pokemon.Especie.Descripcion}}</p>
                             </div>
 
                         </div>
@@ -88,8 +88,18 @@
                             </div>
                             <div class="col">
                                 <strong>Habilidades</strong>
+
                                 @for (habilidad of pokemon.Habilidades; track habilidad.IdHabilidad) {
-                                <p><strong> {{habilidad.Nombre}}: </strong> {{habilidad.EfectosEntrada[0]}}</p>
+
+                                <p>
+                                    <strong> {{habilidad.Nombre}}: </strong> 
+                                    
+                                    @for(efectoEntrada of habilidad.EfectosEntrada; track $index){
+
+                                        {{efectoEntrada}}
+
+                                    }
+                                </p>
                                 }
                             </div>
 
