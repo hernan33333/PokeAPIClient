@@ -6,20 +6,36 @@
             </div>
             <div class="col-2">
                 <select class="form-select" aria-label="Default select example">
-                    <option selected>Region</option>
-                </select>
-            </div>
-            <div class="col-2">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Generacion</option>
-                </select>
-            </div>
-            <div class="col-2">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Tipo</option>
-                    @for (tipo of tipos; track tipo.IdTipo) {
-                    <option value="{{tipo.IdTipo}}"> {{tipo.Nombre}}</option>
+                    <option value="0" selected>Seleccione una Región...</option>
+                    @for (region of regiones; track region.id) {
+
+                        <option [value]="region.id">{{region.Nombre}}</option>
+
                     }
+                </select>
+            </div>
+            <div class="col-2">
+                <select class="form-select" aria-label="Default select example">
+                    <option value="0" selected>Seleccione una Generación...</option>
+
+                    @for (generacion of generaciones; track generacion.IdGeneracion) {
+
+                        <option [value]="generacion.IdGeneracion">{{generacion.Nombre}}</option>
+
+                    }
+
+                </select>
+            </div>
+            <div class="col-2">
+                <select class="form-select" aria-label="Default select example">
+                    <option value="0" selected>Seleccione un Tipo...</option>
+
+                    @for (tipo of tipos; track tipo.IdTipo) {
+                        
+                        <option [value]="tipo.IdTipo"> {{tipo.Nombre}}</option>
+
+                    }
+
                 </select>
             </div>
             <div class="col-2">
