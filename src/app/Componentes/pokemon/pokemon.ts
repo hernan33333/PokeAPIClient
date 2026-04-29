@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../Servicios/pokemon-service';
 import { PokemonModel } from '../../Modelos/pokemon-model';
 import { TipoService } from '../../Servicios/tipos-service';
@@ -13,13 +13,19 @@ import { Router } from '@angular/router';
   templateUrl: './pokemon.html',
   styleUrl: './pokemon.css',
 })
-export class Pokemon {
+export class Pokemon implements OnInit{
+  public pokemon: PokemonModel | undefined;
 
   public pokemons: PokemonModel[] = [];
   public tipos: TipoModel[] = [];
+  constructor(private pokemonService: PokemonService, 
+    private tiposService: TipoService,
+  private cdr: ChangeDetectorRef){};
 
-  private router = inject(Router);
-  constructor(private pokemonService: PokemonService, private tiposService: TipoService){};
+  ngOnInit(): void{
+    this.GetById(9);
+  }
+
 
   ngOnInit(){
 
@@ -46,4 +52,17 @@ export class Pokemon {
       }
     )
   }
+
+  GetById(id: number){
+    this.pokemonService.getById(id).subscribe(
+      data=>{
+        this.pokemon = data.object;
+        this.cdr.detectChanges();
+      }
+    )
+  }
+
+
+
+
 }

@@ -44,6 +44,15 @@
     padding-top: 2%;              
 }
 
+.fondoCarga{
+    background-image: url('https://cdn.dribbble.com/users/1771704/screenshots/6124573/attachments/1313609/pokeball.gif');
+    background-size: cover;       /* Ajusta la imagen al tamaño de la pantalla */
+    background-position: center;  /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
+    height: 100vh;  
+    padding-top: 2%;
+}
+
 .elementoInterno{   
     margin-bottom: 3%;
 }

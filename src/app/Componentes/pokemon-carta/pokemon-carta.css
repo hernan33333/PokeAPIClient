@@ -1,0 +1,216 @@
+.cartaPokemon {
+    border-radius: 16px;
+    border-color: white;
+    border-width: 10px;
+    border-style: solid;
+    padding: 8%;
+}
+
+.cartaPokemon:hover {
+    transform: scale(1.05);
+}
+
+.fondoEstadisticas{
+    margin-top: 5%;
+    padding: 4%;
+    background-color: aliceblue;
+    border-radius: 16px;
+}
+.fondoimagen{
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.contenedorTipo{
+    margin: 10%;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3%;
+    border: 2px, black, solid;
+    margin-right: 2%;
+}
+
+.normal{
+    background: #9B96A4;
+}
+.fighting{
+    background:#E08E8E;
+}
+.flying{
+background:#727DFE ;
+}
+.poison{
+background:#9648FF ;
+}
+.ground{
+background:#BF8000 ;
+}
+.rock{
+background:#B8A038 ;
+}
+.bug{
+background:#77AE38 ;
+}
+.ghost{
+background:#8026F2 ;
+}
+.steel{
+background:#606776 ;
+}
+.fire{
+background:#E44136 ;
+}
+.water{
+background:#3972FF ;
+}
+.grass{
+    background: #44BC51;
+}
+.electric{
+background:#E3AB00 ;
+}
+.psychic{
+    background:#E0448E ;
+}
+.ice{
+background:#34ABD2 ;
+}
+.dragon{
+background:#6B1BCF ;
+}
+.dark{
+background:#1D2431 ;
+}
+.fairy{
+background:#EFA1CE ;
+}
+
+.fondoCarta-normal{
+    background-color: rgba(155, 150, 164, 0.9);
+}
+.fondoCarta-fighting{
+    background-color: rgba(224, 142, 142, 0.9);
+}
+.fondoCarta-flying{
+    background-color: rgba(114, 125, 254, 0.9);
+}
+.fondoCarta-poison{
+    background-color: rgba(150, 72, 255, 0.9);
+}
+.fondoCarta-ground{
+    background-color: rgba(191, 128, 0, 0.9);
+}
+.fondoCarta-rock{
+    background-color: rgba(184, 160, 56, 0.9);
+}
+.fondoCarta-bug{
+    background-color: rgba(119, 174, 56, 0.9);
+}
+.fondoCarta-ghost{
+    background-color: rgba(128, 38, 242, 0.9);
+}
+.fondoCarta-steel{
+    background-color: rgba(96, 103, 118, 0.9);
+}
+.fondoCarta-fire{
+    background-color: rgba(228, 65, 54, 0.9);
+}
+.fondoCarta-water{
+    background-color: rgba(57, 114, 255, 0.9);
+}
+.fondoCarta-grass{
+    background-color: rgba(68, 188, 81, 0.9);
+}
+.fondoCarta-electric{
+    background-color: rgba(227, 171, 0, 0.9);
+}
+.fondoCarta-psychic{
+    background-color: rgba(224, 68, 142, 0.9);
+}
+.fondoCarta-ice{
+    background-color: rgba(52, 171, 210, 0.9);
+}
+.fondoCarta-dragon{
+    background-color: rgba(107, 27, 207, 0.9);
+}
+.fondoCarta-dark{
+    background-color: rgba(29, 36, 49, 0.9);
+}
+.fondoCarta-fairy{  
+    background-color: rgba(239, 161, 206, 0.9);
+}
+
+.imagen-normal{
+    background-image: url('https://www.google.com/url?sa=t&source=web&rct=j&url=https%3A%2F%2Fwww.vecteezy.com%2Fphoto%2F15275105-beautiful-lawn-green-field-with-blue-sky-and-clouds-background&ved=0CBcQjRxqFwoTCLi4m6jlkZQDFQAAAAAdAAAAABAF&opi=89978449');
+}
+
+.imagen-fighting{
+    background-image: url('https://www.google.com/url?sa=t&source=web&rct=j&url=https%3A%2F%2Fwww.vecteezy.com%2Ffree-vector%2Ffighting-background&ved=0CBcQjRxqFwoTCJD7q8vlkZQDFQAAAAAdAAAAABAf&opi=89978449');
+}
+
+.imagen-flying{
+    background-image: url('https://wallpaperaccess.com/full/448244.jpg');
+}
+
+.imagen-poison{
+    background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/6ffeab7d-606a-45f5-94ea-9cddb85f7907/db18zmu-79e11695-b15e-44c0-9131-478179409de5.png/v1/fill/w_1006,h_446,q_80,strp/purple_poison_texture__free_to_use__by_cookiementronut_db18zmu-fullview.jpg');
+}
+
+.imagen-ground{
+    background-image: url('https://wallpapers.com/images/featured/dirt-background-ws9b4aoor7kh8l8a.jpg');
+}
+
+.imagen-rock{
+    background-image: url('https://wallpaperaccess.com/full/3362606.jpg');
+}
+
+.imagen-bug{
+    background-image: url('https://tse3.mm.bing.net/th/id/OIP.YJOMYPQ58vTdSxVcrNrK7QHaEo?rs=1&pid=ImgDetMain&o=7&rm=3');
+}
+
+.imagen-ghost{
+    background-image: url('https://wallpaperaccess.com/full/1454451.jpg');
+}
+
+.imagen-steel{
+    background-image: url('https://bgfons.com/uploads/iron/iron_texture1044.jpg');
+}
+
+.imagen-fire{
+    background-image: url('https://wallpaperaccess.com/full/437771.jpg');
+}
+
+.imagen-water{
+    background-image: url('https://wallpaperaccess.com/full/3008896.jpg');
+}
+
+.imagen-grass{
+    background-image: url('https://wallpaperbat.com/img/9742537-closeup-view-of-green-plant-leaves-hd.jpg');
+}
+
+.imagen-electric{
+    background-image: url('https://wallpapercave.com/wp/wp9872540.png');
+}
+
+.imagen-psychic{
+    background-image: url('https://wallpaperaccess.com/full/2825357.png');
+}
+
+.imagen-ice{
+    background-image: url('https://images3.alphacoders.com/662/662277.jpg');
+}
+
+.imagen-dragon{
+    background-image: url('https://images3.alphacoders.com/127/1274732.jpg');
+}
+
+.imagen-dark{
+    background-image: url('https://wallpaperaccess.com/full/279114.jpg');
+}
+
+.imagen-fairy{
+    background-image: url('https://static.vecteezy.com/system/resources/previews/022/776/957/large_2x/magical-fantasy-fairy-tale-scenery-night-in-a-forest-generate-ai-free-photo.jpg');
+}

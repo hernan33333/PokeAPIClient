@@ -8,5 +8,5 @@ import { PokemonModel } from "../../Modelos/pokemon-model";
 })
 
 export class PokemonCartaComponent{
-  @Input() pokemon: any;
+  @Input() pokemon!: PokemonModel;
 }

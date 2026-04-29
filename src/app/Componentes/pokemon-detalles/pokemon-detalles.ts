@@ -1,9 +1,8 @@
-import { Component, Input, AfterViewInit, ChangeDetectorRef, inject } from '@angular/core';
+import { Component, Input, AfterViewInit, ChangeDetectorRef, OnInit } from '@angular/core';
 import { PokemonService } from '../../Servicios/pokemon-service';
 import { PokemonModel } from '../../Modelos/pokemon-model';
-import { ActivatedRoute, Router, RouterLink } from "@angular/router";
-
-declare var Chart: any;
+import { ActivatedRoute, RouterLink } from "@angular/router";
+import { map, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-detalles',
@@ -11,9 +10,7 @@ declare var Chart: any;
   templateUrl: './pokemon-detalles.html',
   styleUrl: './pokemon-detalles.css',
 })
-export class PokemonDetalles {
-
-  @Input() id!: string;
+export class PokemonDetalles implements OnInit {
 
   public pokemon: PokemonModel | undefined;
 
@@ -23,20 +20,19 @@ export class PokemonDetalles {
     private route: ActivatedRoute) { };
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params =>{
-      const id = Number(params.get('id'));
-      if(id){
-        this.GetById(Number(id));
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (id) {
+        this.GetById(parseInt(id))
       }
     })
   }
 
   reproducirGrito(url: string | undefined) {
     if (!url) {
-      console.warn("No hay una URL de audio disponible");
+      console.log("No hay audio disponible");
       return;
     }
-
     const audio = new Audio(url);
     audio.play().catch(err => {
       console.log("No se pudo reproducir: " + err);
@@ -46,9 +42,8 @@ export class PokemonDetalles {
   GetById(IdPokemon: number) {
     this.pokemonService.getById(IdPokemon).subscribe(
       data => {
-        console.log(data.object);
         this.pokemon = data.object;
-        console.log(data)
+        this.cdr.detectChanges();
       }
     )
   }
