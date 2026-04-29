@@ -20,26 +20,6 @@ export class CargaComponent {
 
   ngOnInit(){
 
-    this.GetAll();
-
-  }
-
-  GetAll(){
-
-    this.pokemonService.getAll()
-    .pipe(
-      finalize(() => {
-        
-        this.router.navigate(["pokemon"])
-      })
-    )
-    .subscribe(
-
-      pokemonesData => this.pokemonService.pokemones = pokemonesData,
-      error => console.log("Hubo un error: ", error)
-    );
-
-
   }
 
 

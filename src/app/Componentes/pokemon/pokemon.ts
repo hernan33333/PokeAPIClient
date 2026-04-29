@@ -4,6 +4,7 @@ import { PokemonModel } from '../../Modelos/pokemon-model';
 import { TipoService } from '../../Servicios/tipos-service';
 import { TipoModel } from '../../Modelos/tipo-model';
 import { PokemonCartaComponent } from '../pokemon-carta/pokemon-carta';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon',
@@ -48,53 +49,39 @@ export class Pokemon implements OnInit {
   }
 
 
-cargarPokemons(){
-  this.pokemonService.getAllPaginado(this.offset).subscribe(
-    data => {
-      this.pokemons = data.objects;
-      this.cdr.detectChanges();
-    }
-  )
-}
-
-
-  ngOnInit(){
-
-    if(this.pokemonService.pokemones.length <= 0){
-
-      this.router.navigate([""]);
-
-    }
-
+  cargarPokemons() {
+    this.pokemonService.getAllPaginado(this.offset).subscribe(
+      data => {
+        this.pokemons = data.objects;
+        this.cdr.detectChanges();
+      }
+    )
   }
 
-GetAll(){
-  this.pokemonService.getAll().subscribe(
-    data => {
-      this.pokemons = data.objects;
-      this.cdr.detectChanges();
-    }
-  )
-}
 
-GetAllTipos(){
-  this.tiposService.getAll().subscribe(
-    data => {
-      this.tipos = data;
-    }
-  )
-}
+  GetAll() {
+    this.pokemonService.getAll().subscribe(
+      data => {
+        this.pokemons = data.objects;
+        this.cdr.detectChanges();
+      }
+    )
+  }
 
-GetById(id: number){
-  this.pokemonService.getById(id).subscribe(
-    data => {
-      this.pokemon = data.object;
-      this.cdr.detectChanges();
-    }
-  )
-}
+  GetAllTipos() {
+    this.tiposService.getAll().subscribe(
+      data => {
+        this.tipos = data;
+      }
+    )
+  }
 
-
-
-
+  GetById(id: number) {
+    this.pokemonService.getById(id).subscribe(
+      data => {
+        this.pokemon = data.object;
+        this.cdr.detectChanges();
+      }
+    )
+  }
 }
