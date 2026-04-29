@@ -16,7 +16,8 @@ export class PokemonDetalles implements OnInit {
 
   public urlImagen: string = "";
 
-  constructor(private pokemonService: PokemonService,
+  constructor(
+    private pokemonService: PokemonService,
     private cdr: ChangeDetectorRef,
     private route: ActivatedRoute) { };
 

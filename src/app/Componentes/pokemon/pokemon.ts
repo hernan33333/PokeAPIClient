@@ -4,7 +4,6 @@ import { PokemonModel } from '../../Modelos/pokemon-model';
 import { TipoService } from '../../Servicios/tipos-service';
 import { TipoModel } from '../../Modelos/tipo-model';
 import { PokemonCartaComponent } from '../pokemon-carta/pokemon-carta';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon',
@@ -58,6 +57,16 @@ cargarPokemons(){
   )
 }
 
+
+  ngOnInit(){
+
+    if(this.pokemonService.pokemones.length <= 0){
+
+      this.router.navigate([""]);
+
+    }
+
+  }
 
 GetAll(){
   this.pokemonService.getAll().subscribe(
