@@ -1,20 +1,24 @@
-<div class="cartaPokemon">
+<div class="cartaPokemon fondoCarta-{{pokemon.Tipos[0].Nombre}}">
   <div class="row">
-    <div class="col">
-      <h3>{{pokemon}}</h3>
+  </div>
+  <div class="row fondoimagen imagen-{{pokemon.Tipos[0].Nombre}}">
+    <img src="{{pokemon.Sprites.front_default}}">
+  </div>
+  <div class="fondoEstadisticas">
+    <div class="row">
+      <div class="col-3">
+        <h5><strong>#{{pokemon.Id}} </strong></h5>
+        
+      </div>
+      <div class="col">
+        <h5>{{pokemon.Nombre}}</h5>
+      </div>
     </div>
-    <div class="col">
-      
+    <div class="row">
+      @for (tipo of pokemon.Tipos; track tipo.IdTipo) {
+      <div class="col">
+        <p class="{{tipo.Nombre}} contenedorTipo">{{tipo.Nombre}}</p>
+      </div>
+      }
     </div>
-
   </div>
-  <div class="row">
-    
-  </div>
-  <div class="row">
-    
-  </div>
-  <div class="row">
-    
-  </div>
-</div>
