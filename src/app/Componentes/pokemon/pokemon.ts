@@ -4,6 +4,11 @@ import { PokemonModel } from '../../Modelos/pokemon-model';
 import { TipoService } from '../../Servicios/tipos-service';
 import { TipoModel } from '../../Modelos/tipo-model';
 import { PokemonCartaComponent } from '../pokemon-carta/pokemon-carta';
+import { Router } from '@angular/router';
+import { RegionModel } from '../../Modelos/region-model';
+import { RegionesService } from '../../Servicios/region-service';
+import { GeneracionModel } from '../../Modelos/generacion-model';
+import { GeneracionService } from '../../Servicios/generacion-service';
 import { RouterLink } from '@angular/router';
 import { GeneracionService } from '../../Servicios/generacion-service';
 import { GeneracionModel } from '../../Modelos/generacion-model';
@@ -55,47 +60,69 @@ export class Pokemon implements OnInit {
 
   offset: number = 19;
   paso: number = 19;
-
-  constructor(private pokemonService: PokemonService,
+  
+  constructor(
+    private pokemonService: PokemonService, 
     private tiposService: TipoService,
+    private regionService: RegionesService,
     private generacionService: GeneracionService,
-    private regionService: RegionService,
-    private cdr: ChangeDetectorRef,
-    ){};
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ){};
 
 
 
   ngOnInit(): void {
-    this.cargarPokemons();
-    this.GetAllTipos();
-    this.GetAllGeneraciones();
-    this.GetAllRegiones();
+
+    if(this.pokemonService.pokemones.length <= 0){
+
+      this.router.navigate([""]);
+
+    } else {
+
+      this.cargarPokemons();
+      this.GetAllGeneraciones();
+      this.GetAllRegiones();
+      this.GetAllTipos();
+
+    }
+
   }
 
   cambioPagina(direccion: 'sig' | 'ant') {
+
     if (direccion === 'sig') {
       this.offset += this.paso;
 
-      if (this.offset > 1025) {
+      if (this.offset > 1350) {
         this.offset = 0;
       }
     } else {
       this.offset -= this.paso;
 
       if (this.offset < 0) {
-        this.offset = 1025 - this.paso;
+        this.offset = 1350 - this.paso;
       }
     }
 
+    this.GetAllRegiones();
+    this.GetAllGeneraciones();
+    this.GetAllTipos();
+
     this.cargarPokemons();
+
   }
 
 
   cargarPokemons() {
+
     this.pokemonService.getAllPaginado(this.offset).subscribe(
+
       data => {
+
         this.pokemons = data.objects;
         this.cdr.detectChanges();
+        
       }
     )
   }
@@ -104,42 +131,97 @@ export class Pokemon implements OnInit {
 
     this.pokemonService.getAll().subscribe(
 
-      data =>{
+      pokemonesData =>{
 
-        this.pokemons = data.objects;
+        this.pokemons = pokemonesData.objects;
         this.cdr.detectChanges();
+
+      },
+      error => {
+
+        console.log("Hubo un problema al consultar los pokemones: ", error);
+
 
       }
     )
   }
 
-  GetAllTipos() {
+  GetAllTipos(){
+
     this.tiposService.getAll().subscribe(
-      data => {
-        this.tipos = data.objects;
-        this.cdr.detectChanges();
-      }
-    )
-  }
 
-  GetAllGeneraciones(){
-    this.generacionService.getAll().subscribe(
-      data=>{
-        this.generaciones = data.objects;
+      tiposData => {
+
+        this.tipos = tiposData.objects;
+        this.cdr.detectChanges();
+
+      },
+      error => {
+
+        console.log("Hubo un problema al obtener los tipos: ", error);
+
+
       }
     )
   }
 
   GetAllRegiones(){
+
     this.regionService.getAll().subscribe(
-      data =>{
-        this.regiones = data.objects;
+
+      regionesData => {
+        
+        this.regiones = regionesData.objects;
         this.cdr.detectChanges();
+        
+
+      },
+      error => {
+
+        console.log("Hubo un problema al obtener las regiones: ", error);
+
+      }
+
+    );
+
+  }
+
+  GetAllGeneraciones(){
+    
+    this.generacionService.getAll().subscribe(
+
+      generacionesData => {
+
+        this.generaciones = generacionesData.objects;
+        this.cdr.detectChanges();
+
+      },
+      error => {
+
+        console.log("Hubo un problema al obtener las generaciones: ", error);
+
+
+      }
+
+
+    );
+
+  }
+
+  GetById(id: number){
+
+    this.pokemonService.getById(id).subscribe(
+
+      pokemonData => {
+
+        this.pokemon = pokemonData.object;
+
       }
     )
   }
+}
 
-  busqueda(){
+ busqueda(){
     console.log(this.form.value)
     this.pokemon = this.form.value as PokemonModel;
     console.log(this.pokemon)
