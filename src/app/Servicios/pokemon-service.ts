@@ -27,4 +27,8 @@ export class PokemonService {
   getById(IdPokemon: number):Observable<ResultadoModel<PokemonModel>>{
     return this.http.get<ResultadoModel<PokemonModel>>(this.url+"/"+IdPokemon);
   }
+
+  busqueda(pokemon:PokemonModel):Observable<ResultadoModel<PokemonModel>>{
+    return this.http.post<ResultadoModel<PokemonModel>>(this.url,pokemon)
+  }
 }

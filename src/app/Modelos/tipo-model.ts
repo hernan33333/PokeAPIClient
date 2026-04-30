@@ -1,4 +1,5 @@
 export interface TipoModel{
-    IdTipo: number,
-    Nombre: string
+    Id: number,
+    Nombre: string,
+    Generacion: number
 }

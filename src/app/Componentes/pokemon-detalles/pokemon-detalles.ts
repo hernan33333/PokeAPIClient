@@ -3,6 +3,7 @@ import { PokemonService } from '../../Servicios/pokemon-service';
 import { PokemonModel } from '../../Modelos/pokemon-model';
 import { ActivatedRoute, RouterLink } from "@angular/router";
 import { map, switchMap, tap } from 'rxjs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-pokemon-detalles',
@@ -19,6 +20,7 @@ export class PokemonDetalles implements OnInit {
   constructor(
     private pokemonService: PokemonService,
     private cdr: ChangeDetectorRef,
+    private location: Location,
     private route: ActivatedRoute) { };
 
   ngOnInit(): void {
@@ -33,7 +35,6 @@ export class PokemonDetalles implements OnInit {
   cambiarImagen(url: string){
       this.urlImagen = url;
       this.cdr.detectChanges();
-    
   }
 
   reproducirGrito(url: string | undefined) {
@@ -55,5 +56,9 @@ export class PokemonDetalles implements OnInit {
         this.cdr.detectChanges();
       }
     )
+  }
+
+  regresar(){
+    this.location.back();
   }
 }

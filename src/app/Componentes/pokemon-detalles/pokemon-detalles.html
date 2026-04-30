@@ -6,24 +6,27 @@
             <div class="row">
                 <div class="col-3">
                     <div class="contenedorImagenPokemon">
-                        <img class="imagenPokemon" [src]="urlImagen"
-                            (click)="reproducirGrito(pokemon.Sonido)">
+                        <img class="imagenPokemon" [src]="urlImagen" (click)="reproducirGrito(pokemon.Sonido)">
                     </div>
                     <div class="row">
                         <div class="col">
-                            <button class="machoBoton"><i class="bi bi-gender-male" (click)="cambiarImagen(pokemon.Sprites.front_default)"></i></button>
+                            <button class="machoBoton"><i class="bi bi-gender-male"
+                                    (click)="cambiarImagen(pokemon.Sprites.front_default)"></i></button>
                         </div>
                         @if(pokemon.Sprites.front_female){
-                            <div class="col">
-                            <button class="hembraBoton"><i class="bi bi-gender-female" (click)="cambiarImagen(pokemon.Sprites.front_female)"></i></button>
+                        <div class="col">
+                            <button class="hembraBoton"><i class="bi bi-gender-female"
+                                    (click)="cambiarImagen(pokemon.Sprites.front_female)"></i></button>
                         </div>
                         }
                         <div class="col">
-                            <button class="shinyBoton"><i class="bi bi-gender-male" (click)="cambiarImagen(pokemon.Sprites.front_shiny)"></i></button>
+                            <button class="shinyBoton"><i class="bi bi-gender-male"
+                                    (click)="cambiarImagen(pokemon.Sprites.front_shiny)"></i></button>
                         </div>
                         @if(pokemon.Sprites.front_shiny_female){
-                            <div class="col">
-                            <button class="shinyBoton"><i class="bi bi-gender-female" (click)="cambiarImagen(pokemon.Sprites.front_shiny_female)"></i></button>
+                        <div class="col">
+                            <button class="shinyBoton"><i class="bi bi-gender-female"
+                                    (click)="cambiarImagen(pokemon.Sprites.front_shiny_female)"></i></button>
                         </div>
                         }
                     </div>
@@ -58,27 +61,41 @@
                                 }
                             </div>
                             <div class="col">
-                                <h1 class="text-dark"><strong>{{pokemon.Id}}</strong></h1>
+                                <h1 class="text-dark"><strong>
+                                        @if(pokemon.Id>999){
+                                        No.{{pokemon.Id}}
+                                        }@else {
+                                        @if (pokemon.Id>99) {
+                                        No.0{{pokemon.Id}}
+                                        }@else {
+                                        @if(pokemon.Id>9){
+                                        No.00{{pokemon.Id}}
+                                        }@else {
+                                        No.000{{pokemon.Id}}
+                                        }
+                                        }
+                                        }
+                                    </strong></h1>
                             </div>
                             <div class="col">
-
+                                <button class="btn btn-warning" (click)="regresar()"><i class="bi bi-arrow-90deg-left"></i></button>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
                                 <div class="elementoInterno">
-                                    @for (tipo of pokemon.Tipos; track tipo.IdTipo) {
+                                    @for (tipo of pokemon.Tipos; track tipo.Id) {
                                     <strong class="{{tipo.Nombre}}">{{tipo.Nombre}}</strong>
                                     }
                                 </div>
-                                <strong class="elementoInterno">Descripcion</strong>
-                                <p>{{pokemon.Especie.Descripcion}}</p>
+                                <h6 class="elementoInterno">{{pokemon.Especie.Descripcion}}
+                                </h6>
                             </div>
 
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-2">
                                 <div>
                                     <strong>Altura: {{pokemon.Altura}} mt</strong>
                                 </div>
@@ -88,18 +105,8 @@
                             </div>
                             <div class="col">
                                 <strong>Habilidades</strong>
-
                                 @for (habilidad of pokemon.Habilidades; track habilidad.IdHabilidad) {
-
-                                <p>
-                                    <strong> {{habilidad.Nombre}}: </strong> 
-                                    
-                                    @for(efectoEntrada of habilidad.EfectosEntrada; track $index){
-
-                                        {{efectoEntrada}}
-
-                                    }
-                                </p>
+                                <p><strong> {{habilidad.Nombre}}: </strong> {{habilidad.EfectosEntrada[0]}}</p>
                                 }
                             </div>
 

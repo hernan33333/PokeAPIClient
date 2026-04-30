@@ -1,24 +1,19 @@
-import { Injectable } from '@angular/core';
-import { RegionModel } from '../Modelos/region-model';
-import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
-import { ResultadoModel } from '../Modelos/resultado-model';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { ResultadoModel } from "../Modelos/resultado-model";
+import { RegionModel } from "../Modelos/region-model";
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
-export class RegionesService {
 
-  private url:string = "http://localhost:8080/pokeapi/region";
+export class RegionService{
+    public url:string = "http://localhost:8080/pokeapi/region";
 
-  constructor(
-    private http : HttpClient
-  ){};
+    constructor(private http: HttpClient){};
 
-  getAll() : Observable<RegionModel[]>{
-
-    return this.http.get<ResultadoModel<RegionModel>>(this.url).pipe(map((resultRegion : ResultadoModel<RegionModel>) => resultRegion.objects as RegionModel[]));
-
-  }
-
+    getAll():Observable<ResultadoModel<RegionModel>>{
+        return this.http.get<ResultadoModel<RegionModel>>(this.url);
+    }
 }

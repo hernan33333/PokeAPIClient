@@ -1,24 +1,18 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
-import { GeneracionModel } from '../Modelos/generacion-model';
-import { ResultadoModel } from '../Modelos/resultado-model';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { ResultadoModel } from "../Modelos/resultado-model";
+import { GeneracionModel } from "../Modelos/generacion-model";
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
-export class GeneracionService {
+export class GeneracionService{
+    private url:string = "http://localhost:8080/pokeapi/generacion";
 
-  private url:string = "http://localhost:8080/pokeapi/generacion";
+    constructor (private http: HttpClient){};
 
-  constructor(
-    private http: HttpClient
-  ){}
-  
-  getAll(): Observable<GeneracionModel[]>{
-
-    return this.http.get<ResultadoModel<GeneracionModel>>(this.url).pipe(map((resultGeneracion : ResultadoModel<GeneracionModel>) => resultGeneracion.objects as GeneracionModel[]));
-
-  }
-
+    getAll():Observable<ResultadoModel<GeneracionModel>>{
+        return this.http.get<ResultadoModel<GeneracionModel>>(this.url);
+    }
 }

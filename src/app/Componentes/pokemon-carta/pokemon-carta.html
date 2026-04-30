@@ -6,18 +6,32 @@
   </div>
   <div class="fondoEstadisticas">
     <div class="row">
-      <div class="col-3">
-        <h5><strong>#{{pokemon.Id}} </strong></h5>
+      <div class="col-4">
+        <h5><strong>
+          @if(pokemon.Id>999){
+            No.{{pokemon.Id}}
+          }@else {
+            @if (pokemon.Id>99) {
+              No.0{{pokemon.Id}}
+            }@else {
+              @if(pokemon.Id>9){
+                No.00{{pokemon.Id}}
+              }@else {
+                No.000{{pokemon.Id}}
+              }
+            }
+          }
+        </strong></h5>
         
       </div>
-      <div class="col">
+      <div class="col-8 text-center">
         <h5>{{pokemon.Nombre}}</h5>
       </div>
     </div>
     <div class="row">
-      @for (tipo of pokemon.Tipos; track tipo.IdTipo) {
+      @for (tipo of pokemon.Tipos; track tipo.Id) {
       <div class="col">
-        <p class="{{tipo.Nombre}} contenedorTipo">{{tipo.Nombre}}</p>
+        <p class="{{tipo.Nombre}} contenedorTipo text-center">{{tipo.Nombre}}</p>
       </div>
       }
     </div>

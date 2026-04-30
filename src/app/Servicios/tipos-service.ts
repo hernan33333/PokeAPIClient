@@ -15,9 +15,7 @@ export class TipoService{
         private http: HttpClient
     ){};
 
-    getAll():Observable<TipoModel[]>{
-        
-        return this.http.get<ResultadoModel<TipoModel>>(this.url).pipe(map((resultTipo : ResultadoModel<TipoModel>) => resultTipo.objects as TipoModel[]));
-        
+    getAll():Observable<ResultadoModel<TipoModel>>{
+        return this.http.get<ResultadoModel<TipoModel>>(this.url);
     }
 }
