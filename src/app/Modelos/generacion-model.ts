@@ -1,7 +1,7 @@
 import { RegionModel } from "./region-model"
 
 export interface GeneracionModel{
-    IdGeneracion: number,
+    Id: number,
     Nombre: string
     Region: RegionModel
 }

@@ -1,14 +1,20 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { PokemonService } from '../../Servicios/pokemon-service';
 import { PokemonModel } from '../../Modelos/pokemon-model';
 import { TipoService } from '../../Servicios/tipos-service';
 import { TipoModel } from '../../Modelos/tipo-model';
 import { PokemonCartaComponent } from '../pokemon-carta/pokemon-carta';
 import { RouterLink } from '@angular/router';
+import { GeneracionService } from '../../Servicios/generacion-service';
+import { GeneracionModel } from '../../Modelos/generacion-model';
+import { RegionModel } from '../../Modelos/region-model';
+import { RegionService } from '../../Servicios/region-service';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pokemon',
-  imports: [PokemonCartaComponent, RouterLink],
+  imports: [PokemonCartaComponent, RouterLink, ReactiveFormsModule, CommonModule],
   standalone: true,
   templateUrl: './pokemon.html',
   styleUrl: './pokemon.css',
@@ -18,18 +24,52 @@ export class Pokemon implements OnInit {
 
   public pokemons: PokemonModel[] = [];
   public tipos: TipoModel[] = [];
+  public generaciones: GeneracionModel[] = [];
+  public regiones: RegionModel[] = [];
+  private formularioReactivo = inject(FormBuilder);
+
+  public RegionDefecto: RegionModel ={
+    id:0,
+    Generacion:0,
+    Nombre: "Ninguna opcion seleccionada"
+  }
+
+  public GeneracionDefecto: GeneracionModel ={
+    Id:0,
+    Nombre:"Ninguna opcion seleccionda",
+    Region: this.RegionDefecto
+  }
+
+  public TipoDefecto: TipoModel ={
+    Id: 0,
+    Nombre: "Ninguna opcion seleccionada",
+    Generacion: 0
+  }
+  
+  public form: FormGroup = this.formularioReactivo.group({
+    Nombre: [''],
+    Region: [this.RegionDefecto],
+    Generacion: [this.GeneracionDefecto],
+    Tipos: [this.TipoDefecto]
+  })
 
   offset: number = 19;
   paso: number = 19;
 
   constructor(private pokemonService: PokemonService,
     private tiposService: TipoService,
+    private generacionService: GeneracionService,
+    private regionService: RegionService,
     private cdr: ChangeDetectorRef,
-    private router : Router
     ){};
+
+
 
   ngOnInit(): void {
     this.cargarPokemons();
+    this.GetAllTipos();
+    this.GetAllGeneraciones();
+    this.GetAllRegiones();
   }
 
   cambioPagina(direccion: 'sig' | 'ant') {
@@ -66,7 +106,7 @@ export class Pokemon implements OnInit {
 
       data =>{
 
-        this.pokemons = data;
+        this.pokemons = data.objects;
         this.cdr.detectChanges();
 
       }
@@ -76,16 +116,42 @@ export class Pokemon implements OnInit {
   GetAllTipos() {
     this.tiposService.getAll().subscribe(
       data => {
-        this.tipos = data;
+        this.tipos = data.objects;
+        this.cdr.detectChanges();
       }
     )
   }
 
-  GetById(id: number) {
-    this.pokemonService.getById(id).subscribe(
-      data => {
-        this.pokemon = data.object;
+  GetAllGeneraciones(){
+    this.generacionService.getAll().subscribe(
+      data=>{
+        this.generaciones = data.objects;
       }
     )
+  }
+
+  GetAllRegiones(){
+    this.regionService.getAll().subscribe(
+      data =>{
+        this.regiones = data.objects;
+        this.cdr.detectChanges();
+      }
+    )
+  }
+
+  busqueda(){
+    console.log(this.form.value)
+    this.pokemon = this.form.value as PokemonModel;
+    console.log(this.pokemon)
+    this.pokemonService.busqueda(this.pokemon).subscribe({
+      next:(data) =>{
+        if(data.correct){
+          this.pokemons = data.objects;
+          this.cdr.detectChanges();
+        }else{
+          console.log("error:"+data.errorMessage);
+        }
+      }
+    })
   }
 }

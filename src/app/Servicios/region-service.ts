@@ -1,18 +1,19 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { TipoModel } from "../Modelos/tipo-model";
 import { ResultadoModel } from "../Modelos/resultado-model";
+import { RegionModel } from "../Modelos/region-model";
 
 @Injectable({
     providedIn: 'root',
 })
-export class TipoService{
-    private url:string = "http://localhost:8080/pokeapi/tipos";
+
+export class RegionService{
+    public url:string = "http://localhost:8080/pokeapi/region";
 
     constructor(private http: HttpClient){};
 
-    getAll():Observable<ResultadoModel<TipoModel>>{
-        return this.http.get<ResultadoModel<TipoModel>>(this.url);
+    getAll():Observable<ResultadoModel<RegionModel>>{
+        return this.http.get<ResultadoModel<RegionModel>>(this.url);
     }
 }

@@ -20,7 +20,8 @@ export class CargaComponent {
 
   ngOnInit(){
 
-  }
+    
 
+  }
 
 }
