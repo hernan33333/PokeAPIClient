@@ -1,0 +1,31 @@
+.fondo{
+    background-image: url('https://aestheticwallpapers.io/wallpaper/724782.gif');
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding-top: 2%;     
+    background-attachment: fixed;    
+}
+
+.contenedorExterno{
+    border-radius: 16px;
+    background-color: rgba(38,62,84, 0.6);
+}
+
+
+
+.margenes{
+ margin: 1%;
+}
+
+.logo{
+    max-width: 30%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.imagenInferior{
+    max-width: 10%;
+    margin-top: 3%;
+}
