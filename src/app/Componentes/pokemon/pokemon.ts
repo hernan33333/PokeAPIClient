@@ -75,12 +75,10 @@ export class Pokemon implements OnInit {
       this.router.navigate([""]);
 
     } else {
-
       this.cargarPokemons();
       this.GetAllGeneraciones();
       this.GetAllRegiones();
       this.GetAllTipos();
-
     }
 
   }
@@ -104,7 +102,6 @@ export class Pokemon implements OnInit {
     this.GetAllRegiones();
     this.GetAllGeneraciones();
     this.GetAllTipos();
-
     this.cargarPokemons();
 
   }

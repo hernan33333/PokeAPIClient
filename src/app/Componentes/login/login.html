@@ -1,9 +1,10 @@
 <div class="fondo">
     <div class="container">
-        <form class="contenedorExterno">
+        <form class="contenedorExterno" [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="row text-center">
                 <div class="col">
-                    <img class="logo" src="https://th.bing.com/th/id/R.ddd5084dff8d7606019645f62c1712c6?rik=RJm8gtkd41am8Q&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpokemon-logo-png-pokemon-logo-png-2000.png&ehk=%2bFdpvqx7Vk1jcWsSaxVIqArQSByK89fRtNQoRFktAhY%3d&risl=&pid=ImgRaw&r=0">
+                    <img class="logo"
+                        src="https://th.bing.com/th/id/R.ddd5084dff8d7606019645f62c1712c6?rik=RJm8gtkd41am8Q&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpokemon-logo-png-pokemon-logo-png-2000.png&ehk=%2bFdpvqx7Vk1jcWsSaxVIqArQSByK89fRtNQoRFktAhY%3d&risl=&pid=ImgRaw&r=0">
                 </div>
             </div>
             <div class="row text-center">
@@ -12,18 +13,29 @@
                 </div>
             </div>
             <div class="row text-center">
-                <div class="col">
-                    <input type="text " class="margenes text-center" placeholder="Correo">
+                <div class="col margenes">
+                    <input type="text " class=" text-center" placeholder="Correo" formControlName="email"
+                        required="true">
+
                 </div>
             </div>
             <div class="row text-center">
-                <div class="col">
-                    <input type="password" class="margenes text-center" placeholder="Contraseña">
+                <div class="col margenes">
+                    <input type="password" class=" text-center" placeholder="Contraseña" formControlName="password"
+                        required="true">
+
                 </div>
             </div>
+            @if(!correcto){
+            <div class="row text-center">
+                <p class="text-danger">Usuario o contraseña incorrectos</p>
+            </div>
+
+            }
             <div class="row text-center">
                 <div class="col">
-                    <button type="submit" class="btn btn-warning margenes"><i class="bi bi-box-arrow-right"></i> Ingresar</button>
+                    <button type="submit" class="btn btn-warning margenes"><i class="bi bi-box-arrow-right"></i>
+                        Ingresar</button>
                 </div>
             </div>
             <div class="row text-center">
@@ -33,12 +45,13 @@
             </div>
             <div class="row text-center">
                 <div class="col">
-                    <a class="text-light margenes">Crea una</a>
+                    <a class="text-light margenes" [routerLink]="['/registro']">Crea una</a>
                 </div>
             </div>
             <div class="row text-center">
                 <div class="col">
-                    <img class="imagenInferior" src="https://th.bing.com/th/id/R.f97f5c6510994f677877b08320475008?rik=6KPQtB5WuKJ76Q&riu=http%3a%2f%2ffc04.deviantart.net%2ffs71%2ff%2f2013%2f019%2f2%2f7%2fpokeball_by_zel_duh-d5s04qj.gif&ehk=8UFPaRN8z9J50cxA4WMUQkZ2KBSHryEFwbldNMSuOaU%3d&risl=&pid=ImgRaw&r=0">
+                    <img class="imagenInferior"
+                        src="https://th.bing.com/th/id/R.f97f5c6510994f677877b08320475008?rik=6KPQtB5WuKJ76Q&riu=http%3a%2f%2ffc04.deviantart.net%2ffs71%2ff%2f2013%2f019%2f2%2f7%2fpokeball_by_zel_duh-d5s04qj.gif&ehk=8UFPaRN8z9J50cxA4WMUQkZ2KBSHryEFwbldNMSuOaU%3d&risl=&pid=ImgRaw&r=0">
                 </div>
             </div>
         </form>

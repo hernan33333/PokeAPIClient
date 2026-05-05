@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { PokemonModel } from '../Modelos/pokemon-model';
 import { ResultadoModel } from '../Modelos/resultado-model';
@@ -29,6 +29,11 @@ export class PokemonService {
   }
 
   busqueda(pokemon:PokemonModel):Observable<ResultadoModel<PokemonModel>>{
-    return this.http.post<ResultadoModel<PokemonModel>>(this.url,pokemon)
+    const params = new HttpParams()
+    .set('Generacion', pokemon.Generacion.Id)
+    .set('Region', pokemon.Generacion.Region.id)
+    .set('Tipo',pokemon.Tipos[0].Nombre)
+    .set('offset',20)
+    return this.http.get<ResultadoModel<PokemonModel>>(this.url+"/buscar",{params})
   }
 }
