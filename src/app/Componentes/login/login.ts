@@ -20,10 +20,9 @@ export class Login {
   loginForm!: FormGroup;
   
   ngOnInit(): void {
-    // Definimos la estructura del objeto usuario
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      correo: ['', [Validators.required, Validators.email]],
+      contraseña: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 

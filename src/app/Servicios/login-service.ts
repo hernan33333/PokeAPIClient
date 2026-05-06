@@ -5,17 +5,20 @@ import { Observable } from "rxjs";
 import { ResultadoModel } from "../Modelos/resultado-model";
 
 @Injectable({
+
     providedIn: 'root',
+
 })
 
 export class LoginService{
 
-    private url:string = "http://localhost:8080/auth";
-
+    private url:string = "http://192.167.1.16:8080/auth";
 
     constructor (private http: HttpClient){};
 
     iniciarSecion(usuario:any):Observable<ResultadoModel<any>>{
+
         return this.http.post<ResultadoModel<any>>(this.url+"/login",usuario)
+
     }
 }
