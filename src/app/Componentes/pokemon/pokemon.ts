@@ -67,7 +67,6 @@ export class Pokemon implements OnInit {
   ) { };
 
 
-
   ngOnInit(): void {
 
     if (this.pokemonService.pokemones.length <= 0) {
@@ -229,6 +228,3 @@ export class Pokemon implements OnInit {
     })
   }
 }
-
-
-

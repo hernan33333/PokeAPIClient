@@ -1,6 +1,6 @@
 <div class="fondo">
     <div class="container">
-        <form class="contenedorExterno">
+        <form class="contenedorExterno" [formGroup]="addForm" (submit)="agregar()">
             <div class="row text-center">
                 <div class="col">
                     <img class="logo"
@@ -24,7 +24,7 @@
                                 <h4>Nombre de usuario:</h4>
                             </div>
                             <div class="col text-start">
-                                <input type="text" class="separarImputs form-control">
+                                <input type="text" class="separarImputs form-control" placeholder="Nombre" formControlName="nombre">
                                 <button class="btn btn-info separarImputs form-control">Comprobar
                                     disponibilidad</button>
                             </div>
@@ -34,7 +34,7 @@
                                 <h4>Contraseña:</h4>
                             </div>
                             <div class="col text-start">
-                                <input type="password" class="separarImputs form-control">
+                                <input type="password" class="separarImputs form-control" placeholder="Contraseña" formControlName="contraseña">
                             </div>
                         </div>
                         <div class="row">
@@ -42,7 +42,7 @@
                                 <h4>Confirmar contraseña: </h4>
                             </div>
                             <div class="col text-start">
-                                <input type="password" class="separarImputs form-control">
+                                <input type="password" class="separarImputs form-control" placeholder="Confirmar contraseña" formControlName="contraseñaConfirmacion">
                             </div>
                         </div>
                         <div class="row">
@@ -50,7 +50,7 @@
                                 <h4>Correo electronico:</h4>
                             </div>
                             <div class="col text-start">
-                                <input type="text" class="separarImputs form-control">
+                                <input type="text" class="separarImputs form-control" placeholder="Correo" formControlName="correo">
                             </div>
                         </div>
                         <div class="row">
@@ -58,12 +58,12 @@
                                 <h4>Confirmar correo electronico:</h4>
                             </div>
                             <div class="col text-start">
-                                <input type="text" class="separarImputs form-control">
+                                <input type="text" class="separarImputs form-control" placeholder="Confirmar correo" formControlName="correoConfirmacion">
                             </div>
                         </div>
                         <div class="row text-center">
                             <div class="col">
-                            <button type="submit" class="btn btn-success">Confirmar correo</button>
+                            <button type="submit" class="btn btn-success">Crear cuenta</button>
                             </div>
                         </div>
                     </div>

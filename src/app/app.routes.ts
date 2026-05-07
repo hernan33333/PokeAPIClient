@@ -5,6 +5,7 @@ import { CargaComponent } from './Componentes/carga-component/carga-component';
 import { Login } from './Componentes/login/login';
 import { Component } from '@angular/core';
 import { RegistroUsuario } from './Componentes/registro-usuario/registro-usuario';
+import { ActivarCuenta } from './Componentes/activar-cuenta/activar-cuenta';
 
 export const routes: Routes = [
     
@@ -12,5 +13,6 @@ export const routes: Routes = [
     {path: "pokemon",component:Pokemon},
     {path:"pokemon/:id", component: PokemonDetalles},
     {path:"login", component: Login},
-    {path:"registro",component: RegistroUsuario}
+    {path:"registro",component: RegistroUsuario},
+    {path: "activate", component: ActivarCuenta}
 ];

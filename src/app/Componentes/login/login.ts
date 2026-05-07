@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { RouterLink } from "@angular/router";
 import { LoginService } from '../../Servicios/login-service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -26,11 +27,19 @@ export class Login {
     });
   }
 
+  error(message: string) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: message,
+    });
+  }
+
   login():void{
     if(this.loginForm.valid){
 
       const usuario = this.loginForm.value;
-
+        
       console.log('Usuario:', usuario);
 
       this.loginService.iniciarSecion(usuario).subscribe(
@@ -42,14 +51,12 @@ export class Login {
           }else{
             this.correcto = false;
             this.cdr.detectChanges();
+            this.error("Usuario o contraseña incorrectos");
           }
         }
       )
-
     }else {
-
-      console.log('Formulario no válido');
-
+      this.error("Credenciales Invalidas");
     }
   }
 
