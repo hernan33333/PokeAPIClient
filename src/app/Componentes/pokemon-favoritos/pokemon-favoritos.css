@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;500;700;800&family=Press+Start+2P&display=swap%27');
+
+.icono {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+
+.fondo{
+    background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/80ff523f-ff84-457d-a547-464588d3a3d3/dgb0sd8-82d4b895-7bdd-40a4-8e97-2ccd698183a0.jpg/v1/fill/w_1120,h_714,q_70,strp/alola_beach_background_3_by_willdinomaster55_dgb0sd8-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9Nzk3IiwicGF0aCI6IlwvZlwvODBmZjUyM2YtZmY4NC00NTdkLWE1NDctNDY0NTg4ZDNhM2QzXC9kZ2Iwc2Q4LTgyZDRiODk1LTdiZGQtNDBhNC04ZTk3LTJjY2Q2OTgxODNhMC5qcGciLCJ3aWR0aCI6Ijw9MTI1MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.veaeG3u9_5jEE9vdF99jQ35HU2Q3WsuIwVGLZMwMHzU');
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding-top: 2%;     
+    background-attachment: fixed;    
+}
+
+.contSuperior{
+    padding: 2%;
+    background-color: rgba(146, 217, 232, 0.8);
+    border-radius: 12px 12px 0 0;
+}
+
+.contInferior{
+    padding: 1%;
+    background-color: rgba(158, 219, 224, 0.8);
+    border-radius:  0 0 12px 12px;
+}
+
+.contMedio{
+    background-image: url('https://wallpaperaccess.com/full/5818333.jpg');
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;  
+    padding: 2%; 
+}
+
+.contenedorNombre{
+    background-color: #8FCBDE;
+    border-radius: 5px;
+}
+
+.contenedorDatos{
+    background-color: #285681;
+    border-radius: 12px;
+    padding: 1%;
+}
+
+.elementoDato{
+    border: none; 
+    border-left: 3px solid #9AB4B7;
+    padding-left: 3px;
+}
+
+.imagenPokemon{
+    width: 303px;
+    height: 303px;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+
+.contenedorTipo{
+    padding: 2px;
+}
+
+.contenedorDescripciones{
+    background: rgba(31, 72, 104, 0.5);
+    padding: 2%;
+    border-radius: 12px;
+    margin-bottom: 2%;
+}
+
+.contenedorExterno{
+    margin-top: 2%;
+}

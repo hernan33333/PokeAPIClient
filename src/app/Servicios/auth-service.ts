@@ -1,44 +1,33 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable, signal } from "@angular/core";
+import { inject, Injectable, signal } from "@angular/core";
 import { ResultadoModel } from "../Modelos/resultado-model";
 import { tap } from "rxjs";
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class AuthService {
+  private url = "http://192.167.1.26:8080/auth/login";
+  private http = inject(HttpClient);
 
-    private url:string = "http://192.167.1.26:8080/auth/login";
+  private _token = signal<string | null>(sessionStorage.getItem('auth_token'));
+  
+  public token = this._token.asReadonly();
 
-    constructor( private http: HttpClient){}
+  iniciarSecion(usuario: any) {
+    return this.http.post<ResultadoModel<any>>(this.url, usuario).pipe(
+      tap(data => {
+        const tokenServidor = data.object;
+        this.setToken(tokenServidor);
+      })
+    );
+  }
 
-    private _token = signal<String | null>(sessionStorage.getItem('auth_token'));
+  setToken(token: string) {
+    sessionStorage.setItem('auth_token', token);
+    this._token.set(token);
+  }
 
-    getToken() {
-        return this._token;
-    }
-
-    iniciarSecion(usuario:any){
-        return this.http.post<ResultadoModel<any>>(this.url,usuario).pipe(
-            tap(data => {
-                const tokenServidor = data.object;
-                sessionStorage.setItem('access_token', tokenServidor);
-                this._token.set(tokenServidor);
-            })
-        )
-    }
-
-    setToken(token: string) {
-        sessionStorage.setItem('auth_token', token);
-        this._token.set(token);
-    }
-
-    logout() {
-        sessionStorage.removeItem('auth_token');
-        this._token.set(null);
-    }
-
-    isAuthenticated(): boolean {
-        return !!this._token();
-    }
+  logout() {
+    sessionStorage.removeItem('auth_token');
+    this._token.set(null);
+  }
 }

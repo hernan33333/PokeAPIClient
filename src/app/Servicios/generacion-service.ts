@@ -13,6 +13,8 @@ export class GeneracionService{
     constructor (private http: HttpClient){};
 
     getAll():Observable<ResultadoModel<GeneracionModel>>{
+
         return this.http.get<ResultadoModel<GeneracionModel>>(this.url);
+        
     }
 }

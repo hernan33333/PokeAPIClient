@@ -1,0 +1,181 @@
+<div class="fondo">
+    <div class="container">
+
+        <div class="contenedorExterno">
+
+            <div class="row contSuperior">
+
+                <div class="col">
+
+                    <div class="row">
+
+                        <div class="col-2">
+                            <img src="https://getdrawings.com/free-icon/pokedex-icon-65.jpg" class="icono">
+                        </div>
+                        <div class="col">
+                            <h4> POKEDÉX</h4>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col">
+
+                    <div class="row">
+
+                        <div class="col-2">
+                            <img src="https://www.freepnglogos.com/uploads/pokemon-symbol-logo-png-31.png"
+                                class="icono">
+
+                        </div>
+
+                        <div class="col">
+                            <h5>@if(Pokemon.Id>999){
+                                No.{{Pokemon.Id}}
+                                }@else {
+                                @if (Pokemon.Id>99) {
+                                No.0{{Pokemon.Id}}
+                                }@else {
+                                @if(Pokemon.Id>9){
+                                No.00{{Pokemon.Id}}
+                                }@else {
+                                No.000{{Pokemon.Id}}
+                                }
+                                }
+                                }</h5>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+                <div class="col">
+
+                    <div class="contenedorNombre text-center">
+
+                        <h4>{{Pokemon.Nombre}}</h4>
+
+                    </div>
+
+                </div>
+
+                <div class="col">
+
+                </div>
+
+                <div class="col">
+
+                </div>
+
+            </div>
+
+            <div class="row contMedio">
+
+                <div class="col contenedorDatos">
+
+                    <div class="elementoDato text-start">
+                        <p class="text-light">Puntos de Salud: {{Pokemon.PuntosSalud}}</p>
+                    </div>
+
+                    <div class="elementoDato text-start">
+                        <p class="text-light">Ataque: {{Pokemon.Ataque}}</p>
+                    </div>
+
+                    <div class="elementoDato text-start">
+                        <p class="text-light">Ataque Especial: {{Pokemon.AtaqueEspecial}}</p>
+                    </div>
+
+                    <div class="elementoDato text-start">
+                        <p class="text-light">Defensa: {{Pokemon.Defensa}}</p>
+                    </div>
+
+                    <div class="elementoDato text-start">
+                        <p class="text-light">Defensa Especial: {{Pokemon.DefensaEspecial}}</p>
+                    </div>
+
+                    <div class="elementoDato text-start">
+                        <p class="text-light">Velocidad: {{Pokemon.Velocidad}}</p>
+                    </div>
+
+                    <div class="elementoDato text-start">
+                        <p class="text-light">Altura: {{Pokemon.Altura }} mt.</p>
+                    </div>
+
+                    <div class="elementoDato text-start">
+                        <p class="text-light">Altura: {{Pokemon.Peso }} Kg.</p>
+                    </div>
+
+
+                </div>
+
+                <div class="col">
+
+                    <div class="row">
+
+                        <div class="col">
+                            @for (tipo of Pokemon.Tipos; track tipo.Id) {
+                            <div class="contenedorTipo {{tipo.Nombre}} row">
+                                <div class="col-1">
+                                    <img class="icono icono{{Pokemon.Nombre}}">
+                                </div>
+                                <div class="col">
+                                    <strong>{{tipo.Nombre}}</strong>
+                                </div>
+
+                            </div>
+                            }
+                        </div>
+
+                        <div class="col">
+                            <img src="{{Pokemon.Sprites.front_default}}" class="imagenPokemon">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col">
+                    <div class="row contenedorDescripciones">
+                        <div class="elementoDato text-start text-light">
+                            <p><strong>Descripcion: </strong> {{Pokemon.Especie.Descripcion}}</p>
+                        </div>
+                    </div>
+
+                    <div class="row contenedorDescripciones">
+                        <h6 class="text-light">Habilidad</h6>
+                        <div class="elementoDato text-start text-light">
+                            <p><strong>{{Pokemon.Habilidades[0].Nombre}}: </strong>
+                                {{Pokemon.Habilidades[0].EfectosEntrada[0]}}</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="row contInferior text-center">
+
+                <div class="col">
+                    <button class="btn btn-warning">
+                        <i class="bi bi-eye-fill"> </i>
+                        Ver detalles</button>
+                </div>
+                <div class="col">
+                    <button class="btn btn-danger">
+                        <i class="bi bi-trash-fill"> </i>
+                        Eliminar de favoritos</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

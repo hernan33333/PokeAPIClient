@@ -4,6 +4,7 @@ import { RouterLink } from "@angular/router";
 import { LoginService } from '../../Servicios/login-service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthService } from '../../Servicios/auth-service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,10 @@ import Swal from 'sweetalert2';
 })
 export class Login {
 
-  constructor(private fb: FormBuilder, private loginService:LoginService, private cdr:ChangeDetectorRef) {}
+  constructor(private fb: FormBuilder, 
+    private loginService:LoginService, 
+    private cdr:ChangeDetectorRef,
+  private AutenticacionServicio: AuthService) {}
 
   public correcto:boolean = true;
   private router = inject(Router);
@@ -42,7 +46,7 @@ export class Login {
         
       console.log('Usuario:', usuario);
 
-      this.loginService.iniciarSecion(usuario).subscribe(
+      this.AutenticacionServicio.iniciarSecion(usuario).subscribe(
         data=>{
           console.log(data)
           if(data.correct){

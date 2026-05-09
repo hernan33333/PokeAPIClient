@@ -11,6 +11,7 @@ import { ResultadoModel } from "../Modelos/resultado-model";
 })
 
 export class LoginService{
+    
     private url:string = "http://192.167.1.26:8080/auth";
     
     constructor (private http: HttpClient){};
