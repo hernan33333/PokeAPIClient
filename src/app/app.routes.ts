@@ -8,6 +8,8 @@ import { RegistroUsuario } from './Componentes/registro-usuario/registro-usuario
 import { ActivarCuenta } from './Componentes/activar-cuenta/activar-cuenta';
 import { PokemonFavoritos } from './Componentes/pokemon-favoritos/pokemon-favoritos';
 import { UsuarioDetalles } from './Componentes/usuario-detalles/usuario-detalles';
+import { PokemonAPi } from './Componentes/pokemon-api/pokemon-api';
+import { Usuario } from './Componentes/usuario/usuario';
 
 export const routes: Routes = [
     
@@ -18,5 +20,7 @@ export const routes: Routes = [
     {path:"registro",component: RegistroUsuario},
     {path: "activate", component: ActivarCuenta},
     {path: "favoritos/:id", component: PokemonFavoritos},
-    {path: "usuario/:id", component: UsuarioDetalles}
+    {path: "usuario/:id", component: UsuarioDetalles},
+    {path: "Pokeapi", component: PokemonAPi},
+    {path: "usuario", component: Usuario}
 ];

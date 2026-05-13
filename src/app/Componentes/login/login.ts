@@ -51,7 +51,7 @@ export class Login {
           console.log(data)
           if(data.correct){
             this.correcto = true;
-            this.router.navigate(["pokemon"])
+            this.router.navigate(["usuario"])
           }else{
             this.correcto = false;
             this.cdr.detectChanges();

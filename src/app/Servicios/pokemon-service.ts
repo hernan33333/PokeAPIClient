@@ -10,7 +10,7 @@ import { ResultadoModel } from '../Modelos/resultado-model';
 })
 export class PokemonService {
 
-  private url:string = "http://192.167.1.10:8080/Pokeapi";
+  private url:string = "http://192.167.0.172:8080/pokemon";
 
   public pokemones : PokemonModel[] = [];
 

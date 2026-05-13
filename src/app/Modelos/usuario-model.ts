@@ -4,6 +4,6 @@ export interface UsuarioModel{
     idusuario: number,
     nombre: string,
     contraseña: string,
-    correo: string
+    correo: string,
     rol: RolModel,
 }

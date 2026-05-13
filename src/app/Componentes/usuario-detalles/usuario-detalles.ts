@@ -8,7 +8,6 @@ import { ActivatedRoute } from '@angular/router';
 
 import Swal from 'sweetalert2';
 
-
 @Component({
 
   selector: 'app-usuario-detalles',
@@ -75,34 +74,13 @@ export class UsuarioDetalles {
 
 
       }
+
     )
-  }
-
-  error(mensaje: string) {
-
-    Swal.fire({
-
-      icon: 'error',
-
-      title: 'Oops...',
-
-      text: mensaje,
-
-    })
-  }
-
-  exito(mensaje:string){
-
-    Swal.fire({
-
-      icon: 'success',
-
-      title: 'Listo',
-
-      text: mensaje
-
-    })
 
   }
+
+  error(mensaje:string){Swal.fire({icon: 'error',title: 'Oops...',text: mensaje,})}
+
+  exito(mensaje:string){Swal.fire({icon: 'success', title: 'Listo', text: mensaje})}
 
 }

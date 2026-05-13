@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LoginService } from '../../Servicios/login-service';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { UsuarioModel } from '../../Modelos/usuario-model';
+import { AuthService } from '../../Servicios/auth-service';
 
 @Component({
   selector: 'app-activar-cuenta',
@@ -16,6 +17,8 @@ export class ActivarCuenta {
   constructor(private loginServicio: LoginService, private aRoute: ActivatedRoute,
     private router: Router
   ){}
+
+  private AutenticacionServicio = inject(AuthService);
 
   token: string | null = null;
 
@@ -31,7 +34,7 @@ export class ActivarCuenta {
 
 
   activarCuenta(token:string):void{
-    this.loginServicio.activarUsuario(token).subscribe(
+    this.AutenticacionServicio.activarUsuario(token).subscribe(
       data =>{
         if(data.correct){
           console.log("Objeto: "+ data.object)
@@ -44,7 +47,7 @@ export class ActivarCuenta {
   }
 
   iniciarSesion(usuario:UsuarioModel):void{
-    this.loginServicio.iniciarSecion(usuario).subscribe(
+    this.AutenticacionServicio.iniciarSecion(usuario).subscribe(
       data =>{
         if(data.correct){
           this.router.navigate(["pokemon"]);

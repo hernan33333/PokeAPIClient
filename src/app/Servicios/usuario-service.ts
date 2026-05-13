@@ -10,7 +10,7 @@ import { UsuarioModel } from "../Modelos/usuario-model";
 
 export class UsuarioService{
 
-    private url:string = "http://localhost:8080/Pokeapi";
+    private url:string = "http://192.167.0.172:8080/pokeapi";
 
     constructor(private http:HttpClient){}
 
@@ -33,6 +33,5 @@ export class UsuarioService{
     Delete(IdUsuario:number):Observable<ResultadoModel<any>>{
         return this.http.delete<ResultadoModel<any>>(this.url+"/eliminar"+IdUsuario);
     }
-
     
 }

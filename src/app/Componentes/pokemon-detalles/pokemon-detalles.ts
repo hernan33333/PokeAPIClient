@@ -13,7 +13,9 @@ import { Location } from '@angular/common';
 })
 export class PokemonDetalles implements OnInit {
 
-  public pokemon: PokemonModel= {
+  public pokemon: PokemonModel |  undefined;
+
+  /*public pokemon: PokemonModel= {
     Id:1,
     Nombre:"Bulbasaur",
     Altura:7.9,
@@ -66,7 +68,7 @@ export class PokemonDetalles implements OnInit {
   }],
     Velocidad:45
     
-  }
+  }*/
   
 
   public urlImagen: string = "";
@@ -78,12 +80,12 @@ export class PokemonDetalles implements OnInit {
     private route: ActivatedRoute) { };
 
   ngOnInit(): void {
-    /*this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       if (id) {
         this.GetById(parseInt(id))
       }
-    })*/
+    })
   }
 
   cambiarImagen(url: string){

@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { LoginService } from '../../Servicios/login-service';
 import { UsuarioModel } from '../../Modelos/usuario-model';
 import { RolModel } from '../../Modelos/rol-model';
+import { AuthService } from '../../Servicios/auth-service';
 
 @Component({
   selector: 'app-registro-usuario',
@@ -14,6 +15,8 @@ import { RolModel } from '../../Modelos/rol-model';
 })
 export class RegistroUsuario {
   constructor(private formBuilder: FormBuilder, private router: Router, private loginServicio: LoginService) { }
+
+  private AutenticacionServicio = inject(AuthService);
 
   public correcto: boolean = true;
 

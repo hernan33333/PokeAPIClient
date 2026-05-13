@@ -1,0 +1,13 @@
+<p>pokemon-api works!</p>
+<button (click)="ElimitarPokemones()"></button>
+
+@if(!listaPokemon() || listaPokemon().length === 0){
+    <p>Cargando Pokemones</p>
+}@else{
+    @for(pokemon of listaPokemon(); track pokemon.id){
+        <p>{{pokemon.name}}</p>
+
+        <img src="{{pokemon.sprites.other.home.front_default}}">
+    }
+
+}

@@ -12,7 +12,7 @@ import { ResultadoModel } from "../Modelos/resultado-model";
 
 export class LoginService{
     
-    private url:string = "http://192.167.1.26:8080/auth";
+    private url:string = "http://192.167.0.172:8080/auth";
     
     constructor (private http: HttpClient){};
 
@@ -27,11 +27,4 @@ export class LoginService{
         return this.http.post<ResultadoModel<any>>(this.url+"/register",usuario)
         
     }
-
-    activarUsuario(token:string):Observable<ResultadoModel<UsuarioModel>>{
-
-        return this.http.get<ResultadoModel<UsuarioModel>>(this.url+"/activate?token="+token)
-
-    }
-
 }

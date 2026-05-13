@@ -1,8 +1,8 @@
-<!--@if(authService.token()){
-
-}-->
-<div class="container">
+@if(authService.token()){
+<header class="cabecera">
     <h6>El usuario ahora esta logeado</h6>
+    <p>{{authService.getToken()}}</p>
     <button (click)="CerrarSesion()">Cerrar session</button>
-</div>
+</header>
+}
 <router-outlet />
