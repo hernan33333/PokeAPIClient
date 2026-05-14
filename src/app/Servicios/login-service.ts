@@ -12,7 +12,7 @@ import { ResultadoModel } from "../Modelos/resultado-model";
 
 export class LoginService{
     
-    private url:string = "http://192.167.0.172:8080/auth";
+    private url:string = "http://localhost:8080/auth";
     
     constructor (private http: HttpClient){};
 

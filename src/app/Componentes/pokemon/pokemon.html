@@ -8,7 +8,7 @@
                 <div class="col-2">
                     <select class="form-select" aria-label="Default select example" formControlName="Region">
                         <option selected [ngValue]="RegionDefecto">Region</option>
-                        @for (region of regiones; track region.id) {
+                        @for (region of regiones; track $index) {
                         <option [ngValue]="region">{{region.Nombre}}</option>
                         }
                     </select>
@@ -16,7 +16,7 @@
                 <div class="col-2">
                     <select class="form-select" aria-label="Default select example" formControlName="Generacion">
                         <option selected [ngValue]="GeneracionDefecto">Generacion</option>
-                        @for (generacion of generaciones; track generacion.Id) {
+                        @for (generacion of generaciones; track $index) {
                         <option [ngValue]="generacion">{{generacion.Id}}</option>
                         }
                     </select>
@@ -24,7 +24,7 @@
                 <div class="col-2">
                     <select class="form-select" aria-label="Default select example" formControlName="Tipos">
                         <option selected [ngValue]="TipoDefecto">Tipo</option>
-                        @for (tipo of tipos; track tipo.Id) {
+                        @for (tipo of tipos; track $index) {
                         <option [ngValue]="tipo"> {{tipo.Nombre}}</option>
                         }
                     </select>

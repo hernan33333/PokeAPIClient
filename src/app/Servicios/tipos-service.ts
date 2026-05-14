@@ -9,7 +9,7 @@ import { ResultadoModel } from "../Modelos/resultado-model";
 })
 export class TipoService{
     
-    private url:string = "http://localhost:8080/pokeapi/tipos";
+    private url:string = "http://localhost:8080/pokemon/tipos";
 
     constructor(
         private http: HttpClient

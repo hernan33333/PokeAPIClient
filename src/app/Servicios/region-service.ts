@@ -9,7 +9,7 @@ import { RegionModel } from "../Modelos/region-model";
 })
 
 export class RegionService{
-    public url:string = "http://localhost:8080/pokeapi/region";
+    public url:string = "http://localhost:8080/pokemon/region";
 
     constructor(private http: HttpClient){};
 

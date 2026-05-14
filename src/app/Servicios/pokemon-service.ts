@@ -10,9 +10,15 @@ import { ResultadoModel } from '../Modelos/resultado-model';
 })
 export class PokemonService {
 
-  private url:string = "http://192.167.0.172:8080/pokemon";
-
+  private url:string = "http://localhost:8080/pokemon";
   public pokemones : PokemonModel[] = [];
+  pokemon: any ={
+    Nombre: "",
+    Generacion: null,
+    Tipos: null,
+    Region: null
+  }
+
 
   constructor(private http: HttpClient){};
 
@@ -29,11 +35,17 @@ export class PokemonService {
   }
 
   busqueda(pokemon:PokemonModel):Observable<ResultadoModel<PokemonModel>>{
-    const params = new HttpParams()
-    .set('Generacion', pokemon.Generacion.Id)
-    .set('Region', pokemon.Generacion.Region.id)
-    .set('Tipo',pokemon.Tipos[0].Nombre)
-    .set('offset',20)
+    let params = new HttpParams();
+    if(pokemon?.Generacion?.Id){
+      params = params.set('Generacion', pokemon.Generacion.Id.toString());
+    }
+    if(pokemon?.Generacion?.Region?.id){
+      params = params.set('Region', pokemon.Generacion.Region.id.toString());
+    }
+  if(pokemon?.Tipos && pokemon.Tipos.length > 0 && pokemon.Tipos[0].Id.toString()){
+    params = params.set('Tipo',pokemon.Tipos[0].Id.toString());
+  }
+  params =params.set('offset',20);
     return this.http.get<ResultadoModel<PokemonModel>>(this.url+"/buscar",{params})
   }
 }

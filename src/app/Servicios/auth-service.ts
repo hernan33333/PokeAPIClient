@@ -5,7 +5,7 @@ import { tap } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private url = "http://192.167.0.172:8080/auth";
+  private url = "http://localhost:8080/auth";
   private http = inject(HttpClient);
 
   private _token = signal<string | null>(sessionStorage.getItem('auth_token'));
