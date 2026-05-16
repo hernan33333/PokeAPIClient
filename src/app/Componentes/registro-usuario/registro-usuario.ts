@@ -6,6 +6,8 @@ import { LoginService } from '../../Servicios/login-service';
 import { UsuarioModel } from '../../Modelos/usuario-model';
 import { RolModel } from '../../Modelos/rol-model';
 import { AuthService } from '../../Servicios/auth-service';
+import { form } from '@angular/forms/signals';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-registro-usuario',
@@ -17,7 +19,6 @@ export class RegistroUsuario {
   constructor(private formBuilder: FormBuilder, private router: Router, private loginServicio: LoginService) { }
 
   private AutenticacionServicio = inject(AuthService);
-
   public correcto: boolean = true;
 
   addForm!: FormGroup;
@@ -54,49 +55,85 @@ export class RegistroUsuario {
     })
   }
 
-  agregar(): void {
-    if (this.addForm.valid) {
-      const usuario = this.addForm.value;
-      console.log("usuario: " + usuario)
-      if (usuario.contraseña != usuario.contraseñaConfirmacion) {
-        this.correcto = false;
-        this.error("Las contraseñas deben coincidir");
-      }
-      if (usuario.correo != usuario.correoConfirmacion) {
-        this.correcto = false;
-        this.error("Los correos deben coincidir")
-      }
+  async agregar(): Promise<void> {
+    if (this.addForm.invalid) {
+      this.error("Datos inválidos");
+      return;
+    }
 
-      if (this.correcto) {
-        const User: UsuarioModel = {
-          idusuario: 0,
-          nombre: usuario.nombre,
-          correo: usuario.correo,
-          contraseña: usuario.contraseña,
-          rol: this.rolDefecto
-        }
-     
-        console.log("User: "+ User.nombre);
-        console.log("Correo: "+ User.correo);
-        console.log("Contraseña: "+ User.contraseña);
-        console.log("Rol: "+User.rol.idRol)
+    const usuario = this.addForm.value;
 
-        this.loginServicio.registrarUsuario(User).subscribe(
-          data => {
-            if (data.correct) {
-              this.exito("Confirme su correo electronico")
-              
-            } else {
-              this.error("Error al ingresar el usuario")
-            }
-            console.log(data)
-          }
-        )
+    if (usuario.contraseña !== usuario.contraseñaConfirmacion) {
+      this.error("Las contraseñas deben coincidir");
+      return;
+    }
+
+    if (usuario.correo !== usuario.correoConfirmacion) {
+      this.error("Los correos deben coincidir");
+      return;
+    }
+
+    try {
+
+      const respuestaCorreo = await lastValueFrom(this.loginServicio.comprobarCorreo(usuario.correo));
+      if (respuestaCorreo.correct) {
+        this.error("El correo ya está registrado");
+        return;
       }
 
+      const esNombreValido = await this.comprobarNombre();
 
-    } else {
-      this.error("Datos invalidos");
+      if(!esNombreValido){
+        return;
+      }
+
+      const User: UsuarioModel = {
+      idusuario: 0,
+      nombre: usuario.nombre,
+      correo: usuario.correo,
+      contraseña: usuario.contraseña,
+      rol: this.rolDefecto
+    };
+
+    const resultadoRegistro = await lastValueFrom(this.loginServicio.registrarUsuario(User));
+
+    if(resultadoRegistro.correct){
+      this.exito("Confirme su correo electronico");
+      this.addForm.reset();
+    }else{
+      this.error("Error al ingresar al usuario");
+    }
+
+
+    } catch (error) {
+      this.error("Ocurrio un error inesperado: " + error);
+    }
+
+  }
+
+  async comprobarNombre(): Promise<boolean> {
+    const username = this.addForm.get('nombre')?.value;
+
+    if (!username) {
+      this.error("Por favor, ingresa un nombre de usuario primero");
+      return false;
+    }
+
+    try {
+
+      const data = await lastValueFrom(this.loginServicio.comprobarNombre(username));
+
+      if(data.correct){
+        this.error("El nombre de usuario ya esta registrado");
+        return false;
+      }else{
+        this.exito("El nombre de usuario esta disponible");
+        return true;
+      }
+      
+    } catch (error) {
+      this.error("Error al conectar con el servidor: "+ error);
+    return false;
     }
   }
 

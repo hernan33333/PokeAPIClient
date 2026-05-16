@@ -1,11 +1,11 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { inject, Injectable, signal } from "@angular/core";
 import { ResultadoModel } from "../Modelos/resultado-model";
-import { tap } from "rxjs";
+import { catchError, of, tap } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private url = "http://192.167.0.172:8080/auth";
+  private url = "http://192.167.0.69:8080/auth";
   private http = inject(HttpClient);
 
   private _token = signal<string | null>(sessionStorage.getItem('auth_token'));
@@ -17,6 +17,10 @@ export class AuthService {
       tap(data => {
         const tokenServidor = data.object;
         this.setToken(tokenServidor);
+      }),
+      catchError((error: HttpErrorResponse)=>{
+        const respuestaError = error.error as ResultadoModel<any>
+        return of(respuestaError);
       })
     );
   }
