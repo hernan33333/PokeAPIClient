@@ -3,6 +3,8 @@ import { Router, RouterOutlet } from '@angular/router';
 import { AuthService } from './Servicios/auth-service';
 import { ApiService } from './Servicios/api-service';
 import { PokemonApiModel } from './ModelosAPI/pokemonapi-model';
+import { ActivarCuenta } from "./Componentes/activar-cuenta/activar-cuenta";
+import { CargaComponent } from "./Componentes/carga-component/carga-component";
 
 @Component({
   selector: 'app-root',

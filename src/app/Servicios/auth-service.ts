@@ -5,7 +5,7 @@ import { tap } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private url = "http://localhost:8080/auth";
+  private url = "http://192.167.0.204:8080/auth";
   private http = inject(HttpClient);
 
   private _token = signal<string | null>(sessionStorage.getItem('auth_token'));
@@ -15,7 +15,7 @@ export class AuthService {
   iniciarSecion(usuario: any) {
     return this.http.post<ResultadoModel<any>>(this.url + "/login", usuario).pipe(
       tap(data => {
-        const tokenServidor = data.object;
+        const tokenServidor = data.errorMessage;
         this.setToken(tokenServidor);
       })
     );
@@ -24,7 +24,7 @@ export class AuthService {
   activarUsuario(token: string) {
     return this.http.get<ResultadoModel<string>>(this.url + "/activate?token=" + token).pipe(
       tap(data => {
-        const tokenServidor = data.object;
+        const tokenServidor = data.errorMessage;
         this.setToken(tokenServidor);
       })
     )

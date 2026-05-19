@@ -1,6 +1,22 @@
 <div class="background-container">
-    <div class="loader-container">
-        <img class="loader" [src]=rutaImagenCargando
-            alt="Cargando...">
-    </div>
+  <div class="loader-container">
+    <img 
+      class="loader"
+      [src]="rutaImagenCargando"
+      alt="Cargando...">
+  </div>
+  <div class="overlay">
+    @if(cargaService.isLoading | async){
+      <div class="loading-ui">
+        <h2>Cargando pokédex...</h2>
+        <div class="bar-container">
+          <div 
+            class="bar"
+            [style.width.%]="cargaService.progres | async"> </div>
+            <div classs = "cargaService.progres | async"></div>
+        </div>
+       <div class = "progreso-text">{{cargaService.progres | async }}%</div>
+      </div>
+    }
+  </div>
 </div>

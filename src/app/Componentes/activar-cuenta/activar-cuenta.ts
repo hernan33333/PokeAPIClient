@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+  import { Component, inject } from '@angular/core';
 import { LoginService } from '../../Servicios/login-service';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';

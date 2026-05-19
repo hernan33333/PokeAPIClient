@@ -8,7 +8,7 @@ import { GeneracionModel } from "../Modelos/generacion-model";
     providedIn: 'root',
 })
 export class GeneracionService{
-    private url:string = "http://localhost:8080/pokemon/generacion";
+    private url:string = "http://192.167.0.204:8080/pokemon/generacion";
 
     constructor (private http: HttpClient){};
 

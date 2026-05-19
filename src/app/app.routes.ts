@@ -22,5 +22,6 @@ export const routes: Routes = [
     {path: "favoritos/:id", component: PokemonFavoritos},
     {path: "usuario/:id", component: UsuarioDetalles},
     {path: "Pokeapi", component: PokemonAPi},
-    {path: "usuario", component: Usuario}
+    {path: "usuario", component: Usuario},
+    {path: "carga", component: CargaComponent},
 ];

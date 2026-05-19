@@ -1,45 +1,92 @@
-import { Component, inject } from '@angular/core';
-import { PokemonModel } from '../../Modelos/pokemon-model';
-import { PokemonService } from '../../Servicios/pokemon-service';
+import { Component, OnInit, inject, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { Pokemon } from '../pokemon/pokemon';
-import { finalize } from 'rxjs';
+import { PokemonService } from '../../Servicios/pokemon-service';
+import { CargaService } from '../../Servicios/carga-service';   
+import { AsyncPipe } from '@angular/common';
+import { AuthService } from '../../Servicios/auth-service';
 
 @Component({
   selector: 'app-carga-component',
-  imports: [],
+  standalone: true,
+  imports: [AsyncPipe],
   templateUrl: './carga-component.html',
   styleUrl: './carga-component.css',
 })
-export class CargaComponent {
-
-  private pokemonService = inject(PokemonService);
-  private router = inject(Router);
-
+export class CargaComponent implements OnInit {
   rutaImagenCargando = "/pokeball-loading.png";
 
-  ngOnInit(){
+  constructor(
+    private pokemonService: PokemonService,
+    public cargaService: CargaService,   
+    private router: Router,
+    private zone: NgZone,
+    private AuthServicio: AuthService,
 
-    this.GetAll();
+  ) {}
 
+
+  ngOnInit() {
+    if(!this.AuthServicio.token()){
+      this.router.navigate(["login"]);
+    }
+    this.cargaTradicional();
   }
 
-  GetAll(){
+  cargaTradicional() {
 
-    this.pokemonService.getAll()
-    .pipe(
-      finalize(() => {
-        
-        this.router.navigate(["pokemon"])
-      })
-    )
-    .subscribe(
+  this.cargaService.show();
 
-      pokemonesData => this.pokemonService.pokemones = pokemonesData.objects,
-      error => console.log("Hubo un error: ", error)
-    );
+  let progreso = 0;
 
+  this.cargaService.setProgres(progreso);
 
+  const intervalo = setInterval(() => {
+    if (progreso < 85) {
+
+      progreso += 1;
+
+      this.cargaService.setProgres(progreso);
+    }
+
+  }, 80);
+
+  this.pokemonService.getAll().subscribe({
+
+    next: (pokemonesData: any) => {
+
+      this.pokemonService.pokemones = pokemonesData.objects;
+
+      clearInterval(intervalo);
+      const finalInterval = setInterval(() => {
+
+        progreso += 1;
+
+        this.cargaService.setProgres(progreso);
+
+        if (progreso >= 100) {
+
+          clearInterval(finalInterval);
+
+          setTimeout(() => {
+
+            this.cargaService.hide();
+
+            this.router.navigate(["pokemon"]);
+
+          }, 300);
+        }
+
+      }, 20);
+    },
+
+    error: (error: any) => {
+
+      clearInterval(intervalo);
+
+      console.error(error);
+
+      this.cargaService.hide();
+    }
+  });
   }
-
 }
