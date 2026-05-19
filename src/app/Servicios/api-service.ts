@@ -3,6 +3,7 @@ import { inject, Injectable } from "@angular/core";
 import { forkJoin, Observable, of, switchMap, tap } from "rxjs";
 import { ResultApiModel } from "../ModelosAPI/resultapi-model";
 import { PokemonApiModel } from "../ModelosAPI/pokemonapi-model";
+import { Pokemon } from "../Componentes/pokemon/pokemon";
 
 @Injectable({
     providedIn:'root'
@@ -31,6 +32,10 @@ export class ApiService{
                 localStorage.setItem(this.ClaveAlmacenamiento, JSON.stringify(resultado));
             })
         );
+    } 
+
+    GetById(id:number):Observable<any>{
+        return this.http.get<any>(this.url+"/pokemon/"+id)
     }
 
     LimpiarListaPokemons(){

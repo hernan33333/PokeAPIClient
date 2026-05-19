@@ -17,10 +17,11 @@ export class Login {
   constructor(private fb: FormBuilder, 
     private loginService:LoginService, 
     private cdr:ChangeDetectorRef,
-  private AutenticacionServicio: AuthService) {}
+    private AutenticacionServicio: AuthService) {}
 
   public correcto:boolean = true;
   private router = inject(Router);
+  
 
   loginForm!: FormGroup;
   
@@ -63,5 +64,8 @@ export class Login {
       this.error("Credenciales Invalidas");
     }
   }
+
+  
+
 
 }

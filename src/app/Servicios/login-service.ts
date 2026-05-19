@@ -1,7 +1,7 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { UsuarioModel } from "../Modelos/usuario-model";
-import { Observable } from "rxjs";
+import { catchError, Observable, of } from "rxjs";
 import { ResultadoModel } from "../Modelos/resultado-model";
 
 @Injectable({
@@ -12,7 +12,8 @@ import { ResultadoModel } from "../Modelos/resultado-model";
 
 export class LoginService{
     
-    private url:string = "http://192.167.0.204:8080/auth";
+    private url:string = "http://192.167.1.49:8080/auth";
+
     
     constructor (private http: HttpClient){};
 
@@ -24,7 +25,32 @@ export class LoginService{
 
     registrarUsuario(usuario:any):Observable<ResultadoModel<any>>{
 
-        return this.http.post<ResultadoModel<any>>(this.url+"/register",usuario)
+        return this.http.post<ResultadoModel<any>>(this.url+"/register",usuario).pipe(
+            catchError((error: HttpErrorResponse)=>{
+                const respuestaError = error.error as ResultadoModel<any>
+                return of(respuestaError);
+            })
+        )
         
+    }
+
+    comprobarNombre(username:string):Observable<ResultadoModel<any>>{
+        
+        return this.http.get<ResultadoModel<any>>(this.url+"/"+username).pipe(
+            catchError((error: HttpErrorResponse)=>{
+                const respuestaError = error.error as ResultadoModel<any>
+                return of(respuestaError);
+            })
+        )
+    }
+
+    comprobarCorreo(correo:string):Observable<ResultadoModel<any>>{
+
+        return this.http.get<ResultadoModel<any>>(this.url+"/comprobarCorreo/"+correo).pipe(
+            catchError((error: HttpErrorResponse)=>{
+                const respuestaError = error.error as ResultadoModel<any>
+                return of(respuestaError);
+            })
+        )
     }
 }
