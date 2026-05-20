@@ -9,7 +9,7 @@ import { ResultadoModel } from "../Modelos/resultado-model";
 })
 export class TipoService{
     
-    private url:string = "http://192.167.1.49:8080/pokemon/tipos";
+    private url:string = "http://192.167.0.90:8080/pokemon/tipos";
 
     constructor(
         private http: HttpClient

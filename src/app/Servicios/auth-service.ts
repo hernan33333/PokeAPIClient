@@ -5,7 +5,7 @@ import { catchError, of, tap } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private url = "http://192.167.1.49:8080/auth";
+  private url = "http://192.167.0.90:8080/auth";
 
   private http = inject(HttpClient);
 

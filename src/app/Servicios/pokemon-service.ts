@@ -10,7 +10,7 @@ import { ResultadoModel } from '../Modelos/resultado-model';
 })
 export class PokemonService {
 
-  private url:string = "http://192.167.1.49:8080/pokemon";
+  private url:string = "http://192.167.0.90:8080/pokemon";
 
   public pokemones : PokemonModel[] = [];
   pokemon: any ={
@@ -50,13 +50,13 @@ export class PokemonService {
     );
   }
 
-  if (pokemon?.Generacion?.Region?.id) {
+if (pokemon?.Generacion?.Region?.id) {
 
-    params = params.set(
-      'Region',
-      pokemon.Generacion.Region.id.toString()
-    );
-  }
+  params = params.set(
+    'Region',
+    pokemon.Generacion.Region.id.toString()
+  );
+}
 
   if (
     pokemon?.Tipos &&
@@ -70,10 +70,7 @@ export class PokemonService {
     );
   }
 
-  params = params.set(
-    'offset',
-    offset.toString()
-  );
+  params = params.set('offset', offset.toString());
 
   return this.http.get<ResultadoModel<PokemonModel>>(
     this.url + "/buscar",

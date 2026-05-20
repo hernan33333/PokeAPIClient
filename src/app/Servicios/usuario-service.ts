@@ -10,7 +10,7 @@ import { UsuarioModel } from "../Modelos/usuario-model";
 
 export class UsuarioService{
 
-    private url:string = "http://192.167.1.49:8080/pokeapi";
+    private url:string = "http://192.167.0.90:8080/pokeapi";
 
     constructor(private http:HttpClient){}
 
