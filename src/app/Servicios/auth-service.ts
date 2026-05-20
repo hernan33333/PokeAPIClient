@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { inject, Injectable, signal } from "@angular/core";
 import { ResultadoModel } from "../Modelos/resultado-model";
 import { catchError, of, tap } from "rxjs";
+import { UsuarioModel } from "../Modelos/usuario-model";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -12,12 +13,14 @@ export class AuthService {
   private _token = signal<string | null>(sessionStorage.getItem('auth_token'));
 
   public token = this._token.asReadonly();
+  public Usuario:UsuarioModel | undefined;
 
   iniciarSecion(usuario: any) {
-    return this.http.post<ResultadoModel<any>>(this.url + "/login", usuario).pipe(
+    return this.http.post<ResultadoModel<UsuarioModel>>(this.url + "/login", usuario).pipe(
       tap(data => {
         const tokenServidor = data.errorMessage;
         this.setToken(tokenServidor);
+        this.Usuario = data.object;
       }),
       catchError((error: HttpErrorResponse)=>{
         const respuestaError = error.error as ResultadoModel<any>
@@ -27,12 +30,18 @@ export class AuthService {
   }
 
   activarUsuario(token: string) {
-    return this.http.get<ResultadoModel<string>>(this.url + "/activate?token=" + token).pipe(
+    return this.http.get<ResultadoModel<UsuarioModel>>(this.url + "/activate?token=" + token).pipe(
       tap(data => {
         const tokenServidor = data.errorMessage;
         this.setToken(tokenServidor);
+        this.Usuario = data.object;
+      }),
+      catchError((error:HttpErrorResponse)=>{
+        const respuestaError = error.error as ResultadoModel<any>
+        return of(respuestaError);
+
       })
-    )
+      );
   }
 
   getToken(): string | null{

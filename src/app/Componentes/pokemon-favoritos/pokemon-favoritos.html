@@ -1,5 +1,7 @@
 <div class="fondo">
-    <div class="container">
+    @if(Pokemons){
+    @for (Pokemon of Pokemons; track Pokemon.Id) {
+        <div class="container">
 
         <div class="contenedorExterno">
 
@@ -163,7 +165,7 @@
             <div class="row contInferior text-center">
 
                 <div class="col">
-                    <button class="btn btn-warning">
+                    <button class="btn btn-warning" [routerLink]="['/pokemon/',Pokemon.Id]">
                         <i class="bi bi-eye-fill"> </i>
                         Ver detalles</button>
                 </div>
@@ -178,4 +180,10 @@
         </div>
 
     </div>
+    }
+}@else {
+
+    <h1 class="text-center text-light">No hay pokemon favoritos</h1>
+
+}
 </div>

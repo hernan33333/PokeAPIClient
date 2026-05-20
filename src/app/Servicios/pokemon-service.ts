@@ -10,7 +10,11 @@ import { ResultadoModel } from '../Modelos/resultado-model';
 })
 export class PokemonService {
 
+<<<<<<< HEAD
   private url:string = "http://192.167.0.90:8080/pokemon";
+=======
+  private url:string = "http://192.167.0.204:8080/pokemon";
+>>>>>>> origin/miguel
 
   public pokemones : PokemonModel[] = [];
   pokemon: any ={
@@ -35,6 +39,7 @@ export class PokemonService {
     return this.http.get<ResultadoModel<PokemonModel>>(this.url+"/"+IdPokemon);
   }
 
+<<<<<<< HEAD
   busqueda(
   pokemon: PokemonModel,
   offset:number
@@ -48,6 +53,19 @@ export class PokemonService {
       'Generacion',
       pokemon.Generacion.Id.toString()
     );
+=======
+  getFavoritos(IdUsuario:number):Observable<ResultadoModel<PokemonModel>>{
+    return this.http.get<ResultadoModel<PokemonModel>>(this.url+"/favoritos/"+IdUsuario);
+  }
+
+  busqueda(pokemon:PokemonModel):Observable<ResultadoModel<PokemonModel>>{
+    const params = new HttpParams()
+    .set('Generacion', pokemon.Generacion.Id)
+    .set('Region', pokemon.Generacion.Region.id)
+    .set('Tipo',pokemon.Tipos[0].Nombre)
+    .set('offset',20)
+    return this.http.get<ResultadoModel<PokemonModel>>(this.url+"/buscar",{params})
+>>>>>>> origin/miguel
   }
 
 if (pokemon?.Generacion?.Region?.id) {
