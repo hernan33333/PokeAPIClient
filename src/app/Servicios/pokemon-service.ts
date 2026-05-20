@@ -35,18 +35,49 @@ export class PokemonService {
     return this.http.get<ResultadoModel<PokemonModel>>(this.url+"/"+IdPokemon);
   }
 
-  busqueda(pokemon:PokemonModel):Observable<ResultadoModel<PokemonModel>>{
-    let params = new HttpParams();
-    if(pokemon?.Generacion?.Id){
-      params = params.set('Generacion', pokemon.Generacion.Id.toString());
-    }
-    if(pokemon?.Generacion?.Region?.id){
-      params = params.set('Region', pokemon.Generacion.Region.id.toString());
-    }
-  if(pokemon?.Tipos && pokemon.Tipos.length > 0 && pokemon.Tipos[0].Id.toString()){
-    params = params.set('Tipo',pokemon.Tipos[0].Id.toString());
+  busqueda(
+  pokemon: PokemonModel,
+  offset:number
+): Observable<ResultadoModel<PokemonModel>> {
+
+  let params = new HttpParams();
+
+  if (pokemon?.Generacion?.Id) {
+
+    params = params.set(
+      'Generacion',
+      pokemon.Generacion.Id.toString()
+    );
   }
-  params =params.set('offset',20);
-    return this.http.get<ResultadoModel<PokemonModel>>(this.url+"/buscar",{params})
+
+  if (pokemon?.Generacion?.Region?.id) {
+
+    params = params.set(
+      'Region',
+      pokemon.Generacion.Region.id.toString()
+    );
   }
+
+  if (
+    pokemon?.Tipos &&
+    pokemon.Tipos.length > 0 &&
+    pokemon.Tipos[0]?.Id
+  ) {
+
+    params = params.set(
+      'Tipo',
+      pokemon.Tipos[0].Id.toString()
+    );
+  }
+
+  params = params.set(
+    'offset',
+    offset.toString()
+  );
+
+  return this.http.get<ResultadoModel<PokemonModel>>(
+    this.url + "/buscar",
+    { params }
+  );
+}
 }

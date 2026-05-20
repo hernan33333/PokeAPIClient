@@ -82,29 +82,27 @@ export class Pokemon implements OnInit {
 
   }
 
-  cambioPagina(direccion: 'sig' | 'ant') {
+ cambioPagina(direccion: 'sig' | 'ant') {
 
-    if (direccion === 'sig') {
-      this.offset += this.paso;
+  if (direccion === 'sig') {
 
-      if (this.offset > 1350) {
-        this.offset = 0;
-      }
-    } else {
-      this.offset -= this.paso;
+    this.offset += this.paso;
 
-      if (this.offset < 0) {
-        this.offset = 1350 - this.paso;
-      }
+    if (this.offset > 1350) {
+      this.offset = 0;
     }
 
-    this.GetAllRegiones();
-    this.GetAllGeneraciones();
-    this.GetAllTipos();
-    this.cargarPokemons();
+  } else {
 
+    this.offset -= this.paso;
+
+    if (this.offset < 0) {
+      this.offset = 1350 - this.paso;
+    }
   }
 
+  this.busqueda();
+}
 
   cargarPokemons() {
 
@@ -212,19 +210,22 @@ export class Pokemon implements OnInit {
     )
   }
 
-  busqueda() {
-    console.log(this.form.value)
-    this.pokemon = this.form.value as PokemonModel;
-    console.log(this.pokemon)
-    this.pokemonService.busqueda(this.pokemon).subscribe({
-      next: (data) => {
-        if (data.correct) {
-          this.pokemons = data.objects;
-          this.cdr.detectChanges();
-        } else {
-          console.log("error:" + data.errorMessage);
+ busqueda() {
+  console.log(this.form.value);
+  console.log(this.pokemon);
+  this.pokemon = this.form.value as PokemonModel;
+  console.log(this.pokemon);
+  this.pokemonService
+      .busqueda(this.pokemon, this.offset)
+      .subscribe({
+        next: (data) => {
+          if (data.correct) {
+            this.pokemons = data.objects;
+            this.cdr.detectChanges();
+          } else {
+            console.log("error:" + data.errorMessage);
+          }
         }
-      }
-    })
-  }
+      });
+}
 }
