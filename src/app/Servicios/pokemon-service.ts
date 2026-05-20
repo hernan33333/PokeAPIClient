@@ -10,7 +10,7 @@ import { ResultadoModel } from '../Modelos/resultado-model';
 })
 export class PokemonService {
 
-  private url:string = "http://192.167.0.69:8080/pokemon";
+  private url:string = "http://192.167.0.204:8080/pokemon";
 
   public pokemones : PokemonModel[] = [];
 
@@ -26,6 +26,10 @@ export class PokemonService {
 
   getById(IdPokemon: number):Observable<ResultadoModel<PokemonModel>>{
     return this.http.get<ResultadoModel<PokemonModel>>(this.url+"/"+IdPokemon);
+  }
+
+  getFavoritos(IdUsuario:number):Observable<ResultadoModel<PokemonModel>>{
+    return this.http.get<ResultadoModel<PokemonModel>>(this.url+"/favoritos/"+IdUsuario);
   }
 
   busqueda(pokemon:PokemonModel):Observable<ResultadoModel<PokemonModel>>{

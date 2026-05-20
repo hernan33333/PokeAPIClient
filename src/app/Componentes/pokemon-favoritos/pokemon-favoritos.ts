@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { PokemonModel } from '../../Modelos/pokemon-model';
+import { PokemonService } from '../../Servicios/pokemon-service';
+import { AuthService } from '../../Servicios/auth-service';
+import { UsuarioModel } from '../../Modelos/usuario-model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-favoritos',
@@ -9,7 +13,30 @@ import { PokemonModel } from '../../Modelos/pokemon-model';
 })
 export class PokemonFavoritos {
 
-  Pokemon:PokemonModel = {
+  private PokemonServicio = inject(PokemonService);
+  private AuthServicio = inject(AuthService);
+  private cdr = inject(ChangeDetectorRef);
+  public router = inject(Router);
+  public Usuario:UsuarioModel = this.AuthServicio.Usuario!;
+
+  public Pokemons:PokemonModel[] = [];
+
+  ObtenerFavoritos(IdUsuario: number){
+    this.PokemonServicio.getFavoritos(IdUsuario).subscribe(
+      data=>{
+        if(data.correct){
+          this.Pokemons = data.objects;
+          this.cdr.detectChanges();
+        }
+      }
+    )
+  }
+
+  ngOnInit(){
+    this.ObtenerFavoritos(this.Usuario.idusuario);
+  }
+
+  /*Pokemon:PokemonModel = {
     Id:1,
     Nombre:"Bulbasaur",
     Altura:7.9,
@@ -62,5 +89,7 @@ export class PokemonFavoritos {
   }],
     Velocidad:45
     
-  }
+  }*/
+
+
 }

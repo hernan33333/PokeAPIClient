@@ -2,7 +2,12 @@
 <header class="cabecera">
     <h6>El usuario ahora esta logeado</h6>
     <p>{{authService.getToken()}}</p>
-    <button (click)="CerrarSesion()">Cerrar session</button>
+    <p> {{authService.Usuario?.nombre}}</p>
+    <p>{{authService.Usuario?.idusuario}}</p>
+    <button (click)="CerrarSesion()" class="btn btn-danger">
+        <i class="bi bi-box-arrow-right"> </i>
+        Cerrar session
+    </button>
 </header>
 }
 <router-outlet />
